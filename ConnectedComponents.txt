@@ -1,0 +1,13 @@
+def numComponents(self, head, nums):
+        isConnected = False
+        count = 0
+        cur = head
+        while cur:
+            print(cur.val,isConnected )
+            if cur.val in nums and isConnected ==False:
+                isConnected=True
+                count+=1
+            elif cur.val not in nums and isConnected==True:
+                isConnected = False
+            cur=cur.next
+        return count
