@@ -1,0 +1,11 @@
+class Solution(object):
+    def deleteDuplicates(self, head):
+        if head is None or head.next is None: return head
+        if head.val != head.next.val:
+            head.next=self.deleteDuplicates(head.next)
+            return head
+        else:
+            while head and head.next and head.val==head.next.val:
+                head=head.next
+            return self.deleteDuplicates(head.next)
+                
