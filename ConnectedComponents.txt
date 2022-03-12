@@ -1,3 +1,4 @@
+#Using Recursion
 def numComponents(self, head, nums):
         isConnected = False
         count = 0
