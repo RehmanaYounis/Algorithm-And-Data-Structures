@@ -1,0 +1,15 @@
+class Solution(object):
+    def levelOrder(self, root):
+        if not root: return 
+        que = deque()
+        que.append(root)
+        output=[]
+        while que:
+            temp=[]
+            for i in range(len(que)):
+                node=que.popleft()
+                for ch in node.children:
+                    que.append(ch)
+                temp.append(node.val)
+            output.append(temp)
+        return output
