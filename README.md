@@ -12,4 +12,5 @@ Following is the list of problems solved so far
 7. N-ary Tree Level Order Traversal (Leetcode 429)
 8. Binary Tree Level Order Traversal (Leetcode 102)
 9. Binary Tree Level Order Traversal II (Leetcode 107)
-
+10. Maximum Level Sum of a Binary Tree (Leetcode 1161)
+11. Shortest Path in Binary Matrix - LeetCode
