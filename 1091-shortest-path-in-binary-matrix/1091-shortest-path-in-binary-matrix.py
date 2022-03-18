@@ -37,35 +37,7 @@ class Solution(object):
             for d in directions:
                 new_left=cur_left + d[0]
                 new_right = cur_right +d[1]
-                # print('new x and y ',new_left, new_right, rows, cols)
                 if new_left >= 0 and new_right>=0 and new_left<rows and new_right<cols and grid[new_left][new_right] == 0:
                     grid[new_left][new_right]  = 1
                     que.append([new_left, new_right, cur_count+1])
         return -1
-            
-        
-#         if grid[0][0] == 1 : return -1
-#         rows = len(grid)
-#         cols = len(grid[0])
-#         que = deque()
-#         que.append([0,0,1])
-#         direction = [(1, 0), (-1, 0), (0, 1), (0, -1), 
-#                            (1, 1), (-1, -1), (1, -1), (-1, 1)]
-#         grid[0][0]=1
-#         while que:
-#             element = que.popleft()            
-#             if element[0]==rows-1 and element[1] ==cols-1:
-#                 return element[2]
-#             for d in direction:
-#                 row = element[0]+d[0]
-#                 col= element[1] +d[1]
-#                 if row>=0 and col >=0 and row <rows and col <cols and grid[row][col]==0:
-#                     grid[row][col]=1
-#                     que.append([row, col,element[2]+1])
-
-#                     # print(que)
-#         return -1
-                    
-                
-        
-        
