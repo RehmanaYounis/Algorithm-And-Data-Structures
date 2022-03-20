@@ -48,75 +48,23 @@ class Solution(object):
         
         
         
+  
         
         
         
         
         
         
-#         if root is None: return []
         
-#         queu=deque()
-#         queu.append(root)
-#         elements=[]
-#         while queu:
-#             temp=[]
-#             for i in range(len(queu)):
-#                 node=queu.popleft()
-#                 if node.left:
-#                     queu.append(node.left)
-#                 if node.right:
-#                     queu.append (node.right)
-#                 temp.append(node.val)
-#             elements.append(temp)
-#         return elements
+        
+        
+        
+        
+        
+        
+        
+        
 
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         if not root:
-#             return []
-        
-#         output=[]
-#         elements=[]
-#         q=deque([root])
-#         while q:
-#             for i in range(len(q)):
-#                 node=q.popleft()
-#                 elements.append(node.val)
-#                 if node.left:
-#                     q.append(node.left)
-#                 if node.right:
-#                     q.append(node.right)
-#             output.append(elements)
-#             elements=[]
-#         return output
-        
-        
         
         
         
