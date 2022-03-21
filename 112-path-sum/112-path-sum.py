@@ -7,7 +7,6 @@
 class Solution(object):
     def hasPathSum(self, root, targetSum):
         if not root: return
-        print(targetSum, root.val)
         if targetSum == root.val and (root.left is None and root.right is None):
             return True
         targetSum=targetSum - root.val
