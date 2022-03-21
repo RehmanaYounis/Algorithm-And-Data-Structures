@@ -13,19 +13,16 @@ class Solution(object):
         if not root: return
         q=deque()
         q.append(root)
-        output=[]
         while q:
             size=len(q)
             for i in range(len(q)):
                 node=q.popleft()
                 if q: node.next=q[0]
-                output.append(node.val)
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
             node.next= None
-            output.append('#')
         return root
                     
                 
