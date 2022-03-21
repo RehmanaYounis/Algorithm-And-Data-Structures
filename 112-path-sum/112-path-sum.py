@@ -10,7 +10,5 @@ class Solution(object):
         if targetSum == root.val and (root.left is None and root.right is None):
             return True
         targetSum=targetSum - root.val
-        
-        
         return(self.hasPathSum(root.left, targetSum ) or self.hasPathSum(root.right, targetSum ))
         
