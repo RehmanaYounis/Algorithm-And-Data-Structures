@@ -3,6 +3,8 @@ class Solution(object):
         hashmap={}
         for s in strs:
             temp = "".join(sorted(s))
+            temp=tuple(sorted(s))
+            # print(temp)
             if temp not in hashmap.keys():
                 hashmap[temp]=[s]
             else:
