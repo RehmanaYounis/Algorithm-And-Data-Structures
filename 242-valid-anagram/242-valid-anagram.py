@@ -1,11 +1,23 @@
+from collections import defaultdict
 class Solution(object):
     def isAnagram(self, s, t):
-        s=sorted(s)
-        t=sorted(t)
-        if s==t:
+        smap=defaultdict()
+        tmap=defaultdict()
+        for i in s:
+            if i not in smap:
+                smap[i]=0
+            else:
+                smap[i]=smap[i]+1
+        for i in t:
+            if i not in tmap:
+                tmap[i]=0
+            else:
+                tmap[i]=tmap[i]+1
+        if smap==tmap:
             return True
         else:
             return False
+        
     
         
         
