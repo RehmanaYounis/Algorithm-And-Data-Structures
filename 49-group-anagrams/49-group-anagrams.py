@@ -5,7 +5,7 @@ class Solution(object):
             temp = "".join(sorted(s))
             temp=tuple(sorted(s))
             # print(temp)
-            if temp not in hashmap.keys():
+            if temp not in hashmap:
                 hashmap[temp]=[s]
             else:
                 hashmap[temp]=hashmap[temp]+[s]
