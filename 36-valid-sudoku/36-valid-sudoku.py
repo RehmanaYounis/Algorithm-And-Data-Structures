@@ -19,7 +19,6 @@ class Solution(object):
                 else:
                     hashmap[val]=True
             
-        # print(" correct till now")
         hashmap=collections.defaultdict(set)
         for i in range(9):
             for j in range(9):
