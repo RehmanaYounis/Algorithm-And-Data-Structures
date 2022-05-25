@@ -6,13 +6,13 @@ class Solution(object):
         :rtype: int
         """
         nums=s
-        hashmap={}
+        hashmap=collections.defaultdict(int)
         l=0
         res = 0
         curMax=0
         curLen = 0
         for r in range (len(s)):
-            hashmap[s[r]]=1+hashmap.get(s[r],0)
+            hashmap[s[r]]+=1
             curMax=max(hashmap.values())
             curLen= r-l+1
             while (r - l + 1)-max(hashmap.values()) > k:
