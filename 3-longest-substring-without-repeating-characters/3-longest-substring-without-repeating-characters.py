@@ -1,18 +1,51 @@
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        maxcount = 0
-        count = 0
-        hashmap={}
-        l,r= 0, 0
-        while r < (len(s)):            
-            if s[r] in hashmap:
-                hashmap.pop(s[l]) 
-                l = l+1
-            else:
-                hashmap[s[r]]=r
-                maxcount = max(maxcount, len(hashmap.keys()))               
-                r=r+1
-        return maxcount
+        subSet=set()
+        l = 0
+        maxLen=0
+        
+        for r in range(len(s)):
+            while s[r] in subSet:
+                subSet.remove(s[l])
+                l+=1
+            subSet.add(s[r])
+            maxLen=max(maxLen, r-l+1)
+        return maxLen
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         maxcount = 0
+#         count = 0
+#         hashmap={}
+#         l,r= 0, 0
+#         while r < (len(s)):            
+#             if s[r] in hashmap:
+#                 hashmap.pop(s[l]) 
+#                 l = l+1
+#             else:
+#                 hashmap[s[r]]=r
+#                 maxcount = max(maxcount, len(hashmap.keys()))               
+#                 r=r+1
+#         return maxcount
         
   
         
