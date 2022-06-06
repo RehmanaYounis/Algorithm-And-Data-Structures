@@ -6,11 +6,8 @@ class Solution:
         for r in range(len(s)):
             curLen=r-l+1
             hashmap[s[r]]=1 + hashmap.get(s[r],0 )
-           
             while (curLen- max(hashmap.values()) > k):
-                print('first', r, curLen, max(hashmap.values()) )
                 hashmap[s[l]]-=1
-                print('hm', hashmap)
                 l+=1
                 curLen=r-l+1
                 
