@@ -9,8 +9,6 @@ class Solution:
             while (curLen- max(hashmap.values()) > k):
                 hashmap[s[l]]-=1
                 l+=1
-                curLen=r-l+1
-                
-            
+                curLen=r-l+1 
             maxLen=max(maxLen, curLen)
         return(maxLen)
