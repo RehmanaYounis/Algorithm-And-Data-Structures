@@ -5,7 +5,7 @@ class Solution:
         
         def backTrack(perm):
             if len(perm) == len(nums):
-                res.append(perm.copy())
+                res.append(perm[:])
             
             for i in range(len(nums)):
                 if not used[i]:
