@@ -6,7 +6,7 @@ class Solution:
         def Queen( col):
             if col == n:
                 copy=["".join(row) for row in grid]
-                print(copy)
+                # print(copy)
                 res.append(copy)
                 
                 return 
