@@ -1,20 +1,58 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        output=[]
-        subset=[]
-        def backTrack(i, total):
-            if i >=len(candidates) or total>target:
+        res=[]
+        stack=[]
+        def combSum(curSum, j):
+            if curSum>target:
                 return
-            if total == target:
-                print(subset)
-                output.append(subset.copy())
+            if curSum== target:
+                res.append(stack[::])
                 return
-            subset.append(candidates[i])
-            backTrack(i, total+candidates[i])
+            for i in range(j, len(candidates)):
+                    stack.append(candidates[i])
+                    curSum+=candidates[i]
+                    combSum(curSum, i)
+                    temp=stack.pop()
+                    curSum-=temp
+        combSum(0,0)
+        return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         output=[]
+#         subset=[]
+#         def backTrack(i, total):
+#             if i >=len(candidates) or total>target:
+#                 return
+#             if total == target:
+#                 print(subset)
+#                 output.append(subset.copy())
+#                 return
+#             subset.append(candidates[i])
+#             backTrack(i, total+candidates[i])
             
-            subset.pop()
-            backTrack(i+1, total)
+#             subset.pop()
+#             backTrack(i+1, total)
             
-        backTrack(0, 0)
-        return output
+#         backTrack(0, 0)
+#         return output
     
