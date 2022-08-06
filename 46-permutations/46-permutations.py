@@ -1,19 +1,21 @@
-class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
+class Solution(object):
+    def permute(self, nums):
+        # nums = [1,2,3]
         res=[]
-        used=[False]*len(nums)
-        
-        def backTrack(perm):
-            if len(perm) == len(nums):
-                res.append(perm[:])
-            
+        stack=[]
+        used = [False]*len(nums)
+        def backTrack():
+            if len(stack)==len(nums):
+                res.append(stack[::])
+                return
+
             for i in range(len(nums)):
                 if not used[i]:
+                    stack.append(nums[i])
                     used[i]=True
-                    perm.append(nums[i])
-                    backTrack(perm)
+                    backTrack()
                     used[i]=False
-                    perm.pop()
-        backTrack([])
+                    stack.pop()
+        backTrack()
         return res
-            
+        
