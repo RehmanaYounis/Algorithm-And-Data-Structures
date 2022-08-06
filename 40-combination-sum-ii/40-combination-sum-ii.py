@@ -5,7 +5,6 @@ class Solution(object):
         candidates.sort()
 
         def canCombo(cursum, j):
-            print(cursum, j)
             if cursum == target:
                 print(stack, cursum)
                 if stack not in res:
