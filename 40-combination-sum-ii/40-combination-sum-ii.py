@@ -11,7 +11,6 @@ class Solution(object):
                     res.append(stack[::])
                 return 
             if  j>=len(candidates) or cursum>target:
-                print('caught')
                 return 
             prev=-1
             for i in range(j,len(candidates)):
