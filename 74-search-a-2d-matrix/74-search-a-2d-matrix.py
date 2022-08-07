@@ -12,10 +12,8 @@ class Solution(object):
                 end=row-1
             else:
                 break
-        
-        # if not (start<=end):
-        #     return False
-        row=(start+end)//2
+
+        # row=(start+end)//2
         start=0
         end= cols -1
         print(row)
