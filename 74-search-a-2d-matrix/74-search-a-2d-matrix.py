@@ -4,7 +4,6 @@ class Solution(object):
         cols=len(matrix[0])    
         start=0
         end=rows-1
-        
         while start<=end:
             row = (start+end)//2
             if target>matrix[row][-1]:
@@ -14,8 +13,8 @@ class Solution(object):
             else:
                 break
         
-        if not (start<=end):
-            return False
+        # if not (start<=end):
+        #     return False
         row=(start+end)//2
         start=0
         end= cols -1
