@@ -1,17 +1,16 @@
-class Solution(object):
-    def partition(self, s):
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
         res=[]
         stack=[]
-        def isPal(j):
-            if j >= len(s):
+        def dfs(j):
+            if j>=len(s):
                 res.append(stack[::])
                 return
-
-            for i in range(j,len(s)):
-                curStr=s[j:i+1]
-                if curStr == curStr[::-1]:
-                    stack.append(s[j:i+1])
-                    isPal(i+1)
+            for i in range(j, len(s)):
+                curWord = s[j:i+1]
+                if curWord == curWord[::-1]:
+                    stack.append(curWord)
+                    dfs(i+1)
                     stack.pop()
-        isPal(0)
+        dfs(0)
         return res
