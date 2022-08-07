@@ -15,7 +15,6 @@ class Solution:
         res=[]
         def dfs(i):
             if len(digits)==0:
-                # res.append([])
                 return
             if len(stack)==len(digits):
                 res.append(''.join(stack[::]))
