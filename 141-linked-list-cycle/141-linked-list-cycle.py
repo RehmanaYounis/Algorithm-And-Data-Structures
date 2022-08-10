@@ -6,11 +6,32 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        hmap={}
-        cur=head
-        while cur:
-            if cur in hmap: return True
-            hmap[cur]='visited'
-            cur=cur.next
+        slow, fast = head,head
+        
+        while fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+            if slow==fast:
+                return True
         return False
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         hmap={}
+#         cur=head
+#         while cur:
+#             if cur in hmap: return True
+#             hmap[cur]='visited'
+#             cur=cur.next
+#         return False
             
