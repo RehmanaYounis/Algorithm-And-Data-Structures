@@ -11,8 +11,9 @@ class Solution:
                 return
             if not root.left and not root.right:
                 return root
+            root.left, root.right=root.right,root.left
+
             invert(root.left)
             invert(root.right)
-            root.left, root.right=root.right,root.left
             return root
         return invert(root)
