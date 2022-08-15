@@ -13,8 +13,6 @@ class Solution(object):
             right=isHB(root.right)
             if not left or not right:
                 return False
-            print(root.val,left ,right)
-            print(abs(left - right))
             if abs(left - right)>1:
                  return False
             return 1+max(left,right)
