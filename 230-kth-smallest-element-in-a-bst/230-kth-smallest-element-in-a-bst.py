@@ -14,5 +14,4 @@ class Solution(object):
             res.append(root.val)
             dfs(root.right)
         dfs(root)
-        print(res)
         return(res[k-1])
