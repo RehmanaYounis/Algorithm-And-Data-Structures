@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution(object):
     def goodNodes(self, root):
-        res=[]
         count=[0]
         good=[root.val]
         def dfs(root, maxV):
@@ -14,7 +13,6 @@ class Solution(object):
                 return
             maxV=max(root.val, maxV)
             if root.val>=maxV:
-                res.append(root.val)
                 count[0]+=1
                 maxV=root.val
             dfs(root.left,maxV)
