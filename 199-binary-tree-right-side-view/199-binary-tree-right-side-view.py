@@ -7,19 +7,36 @@
 class Solution(object):
     def rightSideView(self, root):
         res=[]
-        q = deque([root])
+        h=[-1]
+        def dfs(root, level):
+            if not root:
+                return
+            if level>h[0]:
+                h[0]=level
+                res.append(root.val)
+            dfs(root.right,level+1)
+            dfs(root.left, level+1)
+        dfs(root, 0)
+        return res
         
-        while q:
-            rightSide=None
-            for i in range(len(q)):
-                node=q.popleft()
-                if node:
-                    rightSide=node
-                    q.append(node.left)
-                    q.append(node.right)
-            if rightSide:
-                res.append(rightSide.val)
-        return(res)
+        
+        
+        
+        
+#         q = deque([root])
+        
+#         while q:
+#             rightSide=None
+#             for i in range(len(q)):
+#                 node=q.popleft()
+#                 # print(node.val)
+#                 if node:
+#                     rightSide=node
+#                     q.append(node.left)
+#                     q.append(node.right)
+#             if rightSide:            
+#                 res.append(rightSide.val)
+#         return(res)
             
         
         
