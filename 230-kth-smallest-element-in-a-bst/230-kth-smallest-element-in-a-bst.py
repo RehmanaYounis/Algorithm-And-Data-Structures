@@ -7,11 +7,33 @@
 class Solution(object):
     def kthSmallest(self, root, k):
         res=[]
-        def dfs(root):
-            if not root:
-                return
-            dfs(root.left)
-            res.append(root.val)
-            dfs(root.right)
-        dfs(root)
-        return(res[k-1])
+        stack=[]
+        cur=root
+        count=0
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur=cur.left
+            cur=stack.pop()
+            res.append(cur.val)
+            count+=1
+            if count == k:
+                return cur.val
+            cur=cur.right
+        print(res)
+        
+        
+        
+        
+        
+        
+        
+        # Recursion
+        # def dfs(root):
+        #     if not root:
+        #         return
+        #     dfs(root.left)
+        #     res.append(root.val)
+        #     dfs(root.right)
+        # dfs(root)
+        # return(res[k-1])
