@@ -6,43 +6,17 @@
 #         self.right = right
 class Solution(object):
     def rightSideView(self, root):
-        if not root:return
-        q =deque()
-        q.append(root)
-        result=[]
-        while q:
-            for i in range(len(q)):
-                node=q.popleft()
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-            result.append(node.val)
-        return result
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         right=[]
-#         def sumRight(root):
-#             if not root: return
-#             right.append(root.val)
-#             if root.right:
-#                 sumRight(root.right)
-#             else:
-#                 sumRight(root.left)
-#             return right
-#         sumRight(root)
-
-#         return right
+        height=[-1]
+        res=[]
+        def dfs(root, cur):
+            if not root:
+                return 
+            if cur>height[0]:
+                res.append(root.val)
+                height[0]=cur
+            dfs(root.right,cur+1)
+            dfs(root.left,cur+1)
+           
+        dfs(root, 0)
+        return res
+            
