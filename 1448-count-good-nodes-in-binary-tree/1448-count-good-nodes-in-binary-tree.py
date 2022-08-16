@@ -13,7 +13,6 @@ class Solution(object):
             if not root:
                 return
             maxV=max(root.val, maxV)
-            print(root.val, maxV)
             if root.val>=maxV:
                 res.append(root.val)
                 count[0]+=1
@@ -21,7 +20,6 @@ class Solution(object):
             dfs(root.left,maxV)
             dfs(root.right,maxV)
         dfs(root, root.val)
-        print(res)
         return count[0]
                 
         
