@@ -14,9 +14,6 @@ class Solution:
             dfs(r,c+1)
             dfs(r,c-1)
         
-        
-        
-        
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] =="1" and (r,c) not in visited:
