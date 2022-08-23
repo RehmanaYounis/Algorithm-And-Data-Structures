@@ -1,38 +1,34 @@
-class Solution(object):
-    def orangesRotting(self, grid):
-        directions=[[-1,0],[1,0],[0,-1],[0,1]]
-        q=deque()
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
         rows=len(grid)
         cols=len(grid[0])
+        q=deque()
         fresh=0
-        for i in range(rows):
-            for j in range(cols):
-                if grid[i][j]==2:
-                    grid[i][j]='*'
-                    q.append([i, j])
-                elif grid[i][j]==1:
+        time=0
+        # if grid[0][0]!=2:
+            
+        for r in range (rows):
+            for c in range (cols):
+                if grid[r][c]==2:
+                    q.append([r,c])
+                if grid[r][c]==1:
                     fresh+=1
-        if fresh ==0:
-            return 0
-        count=0
-        time =0
-        while q:
-            for i in range(len(q)):
-                x,y=q.popleft()
+        directions=[[1,0],[-1,0],[0,1],[0,-1]]
+        while fresh>0 and q:
+            
+            for _ in range(len(q)):
+                r,c=q.popleft()
+                for cr,cc in directions:
                 
-                for d in directions:
-                    x1=x+d[0]
-                    y1=y+d[1]
-                    if x1>=0 and y1>=0 and x1<rows and y1<cols and grid[x1][y1]==1:
-                        q.append([x1,y1])
-                        # print(x1,y1)
-                        grid[x1][y1]='*'
-                        count+=1
+                    rm=r+cr
+                    cm=c+cc
+
+                    if (rm<0 or cm<0 or rm==rows or cm==cols or grid[rm][cm]!=1):
+                        continue
+                    grid[rm][cm]=2
+                    q.append([rm,cm])
+                    fresh-=1
             time+=1
-            if count == fresh:
-                return time
-        return -1
-          
-                    
-                    
        
+        return time if fresh==0 else -1
+        
