@@ -2,93 +2,31 @@ class Solution(object):
     def solve(self, board):
         rows=len(board)
         cols=len(board[0])
-        direction=[[1,0],[-1,0],[0,1],[0,-1]]
-        
-        def dfs(row, col):
-            if row<0 or col<0 or row>=rows or col>=cols or board[row][col] !='O':
+        visited=set()
+        def dfs(r,c,board):
+            if r<0 or c<0 or r==rows or c == cols or (r,c) in visited or board[r][c] !='O':
                 return
-            board[row][col]='2'
-            
-            for d in direction:
-                nrow=row+d[0]
-                ncol=col+d[1]
-                dfs(nrow, ncol)
-        
-        for col in range(cols):
-            if board[0][col]=='O':
-                dfs(0,col)
-            if board[rows-1][col]=='O':
-                dfs(rows-1, col)
+            board[r][c]='R'
+            dfs(r+1,c,board)
+            dfs(r-1,c,board)
+            dfs(r,c+1,board)
+            dfs(r,c-1,board)
+        for c in range(cols):
+            if board[0][c]=='O':
+                dfs(0,c,board)
+            if board[rows-1][c]=='O':
+                dfs(rows-1,c,board)
+        for r in range(rows):
+            if board[r][0]=='O':
+                dfs(r,0,board)
+            if board[r][cols-1]=='O':
+                dfs(r,cols-1,board)
                 
-        for row in range((rows)):
-            if board[row][0]=='O':
-                dfs(row, 0)
-            if board[row][cols-1]=='O':
-                dfs(row, cols-1)
-        
-        for i in range ((rows)):
-            for j in range ((cols)):
-                if board[i][j]=='2':
-                    board[i][j]='O'
-                else:
-                    board[i][j]='X'
-        return board
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#         rows= len(board)
-#         cols=len(board[0])
-        
-#         direction=[[1,0],[-1,0],[0,1],[0,-1]]
-        
-#         def dfs(row, col):
-#             if row<0 or col <0 or row>=rows or col>=cols or board[row][col]!='O':
-#                 return
-#             board[row][col]='2'
-#             for d in direction:
-#                 newrow=row+d[0]
-#                 newcol=col+d[1]
-#                 dfs(newrow, newcol)
-            
-        
-#         for col in range(cols):
-#             if board[0][col]=='O':
-#                 dfs(0,col)
-#             if board[rows-1][col] =='O':
-#                 dfs(rows-1, col)
-        
-        
-#         for row in range(rows):
-#             if board[row][0] == 'O':
-#                 dfs(row, 0)
-#             if board[row][cols-1] == 'O':
-#                 dfs(row, cols-1)
-                
-#         for row in range(rows):
-#             for col in range(cols):
-#                 if board[row][col]=='2':
-#                     board[row][col]='O'
-#                 else:
-#                     board[row][col]='X'
-#         return board
-                    
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c]!='R':
+                    board[r][c]='X'
+        for r in range(rows):
+            for c in range(cols):
+                if board[r][c]=='R':
+                    board[r][c]='O'
