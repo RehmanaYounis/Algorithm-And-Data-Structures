@@ -3,7 +3,7 @@ class Solution:
         cmap={i:[] for i in range((numCourses))}
         for crs,pre in prerequisites:
             cmap[crs].append(pre)
-        
+        print(cmap)
         visited=set()
         def dfs(cur):
             if cur in visited:
