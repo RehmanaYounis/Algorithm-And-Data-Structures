@@ -5,10 +5,7 @@ class Solution:
         edges=set()
         rows=len(isConnected)
         cols=len(isConnected[0])
-        for r in range(rows):
-            for c in range(cols):
-                if isConnected[r][c]==1 and (c,r) not in edges:
-                    edges.add((r,c))
+        
         provinces=len(isConnected)
         print(provinces)
         def find(n):
@@ -30,7 +27,13 @@ class Solution:
                 rank[p2]+=rank[p1]
             return True
         
-        for e1,e2 in edges:
-            if Union(e1, e2):
-                provinces-=1
+#         for e1,e2 in edges:
+#             if Union(e1, e2):
+#                 provinces-=1
+                
+        for r in range(rows):
+            for c in range(cols):
+                if isConnected[r][c]==1:
+                    if Union(r, c):
+                        provinces-=1
         return provinces
