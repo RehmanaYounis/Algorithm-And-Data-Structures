@@ -17,6 +17,6 @@ class Solution:
                 if dfs(nei): return True
                 res.pop()
                 tmap[src].insert(index,nei)
-            return False
+            # return False
         dfs('JFK')
         return res
