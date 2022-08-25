@@ -1,26 +1,23 @@
 class Solution:
     def minCostConnectPoints(self, points: List[List[int]]) -> int:
-        N = len(points)
-        adj = {i: [] for i in range(N)}  # i : list of [cost, node]
-        for i in range(N):
-            x1, y1 = points[i]
-            for j in range(i + 1, N):
-                x2, y2 = points[j]
-                dist = abs(x1 - x2) + abs(y1 - y2)
-                adj[i].append([dist, j])
-                adj[j].append([dist, i])
+        pmap=collections.defaultdict(list)
+        totalp=len(points)
+        for p1 in range(totalp):
+            for p2 in range(p1+1, totalp):
+                dis = abs(points[p1][0]-points[p2][0]) + abs(points[p1][1]-points[p2][1])
+                pmap[p1].append([dis,p2])
+                pmap[p2].append([dis,p1])
 
-        # Prim's
-        res = 0
-        visit = set()
-        minH = [[0, 0]]  # [cost, point]
-        while len(visit) < N:
-            cost, i = heapq.heappop(minH)
-            if i in visit:
+        mHeap=[[0,0]]
+        res=set()
+        cost=0
+        while len(res) < totalp:
+            c, mpoint = heapq.heappop(mHeap)
+            if mpoint in res:
                 continue
-            res += cost
-            visit.add(i)
-            for neiCost, nei in adj[i]:
-                if nei not in visit:
-                    heapq.heappush(minH, [neiCost, nei])
-        return res
+            res.add(mpoint)
+            cost+=c
+            for val, nei in pmap[mpoint]:
+                if nei not in res:
+                    heapq.heappush(mHeap, [val, nei])
+        return cost
