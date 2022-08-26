@@ -1,27 +1,24 @@
 class Solution(object):
     def findItinerary(self, tickets):
         tickets.sort()
-        tmap=collections.defaultdict(list)
-        for f, t in tickets:
-            tmap[f].append(t)
-        
+        ticketMap=collections.defaultdict(list)
+        for f,t in tickets:
+            ticketMap[f].append(t)
+        # print(ticketMap)
+        visit=set()
+        cycle=set()
         res=['JFK']
-       
         def dfs(src):
             if len(res)==len(tickets)+1:
-                return True
-            if src not in tmap:
-                return False
-            for i, nei in enumerate(tmap[src]):
+                return True            
+            for index,nei in enumerate(ticketMap[src]):
                 res.append(nei)
-                tmap[src].remove(nei)
-                if (dfs(nei)):return True
+
+                ticketMap[src].remove(nei)
+                if dfs(nei): return True
                 res.pop()
-                tmap[src].insert(i,nei)
-        
+                ticketMap[src].insert(index,nei)
+                
+                
         dfs('JFK')
         return res
-                
-                
-                
-        
