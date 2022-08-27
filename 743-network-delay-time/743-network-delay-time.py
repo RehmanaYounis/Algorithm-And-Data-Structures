@@ -3,20 +3,19 @@ class Solution(object):
         nmap=collections.defaultdict(list)
         for u,v,w in times:
             nmap[u].append([v,w])
-        
-        visit=set()
-        time=0
         minHeap=[[0,k]]
+        visit=set()
+        time =0
         while minHeap:
-            w,src = heapq.heappop(minHeap)
+            curW, curN = heapq.heappop(minHeap)
             
-            if src in visit:
+            if curN in visit:
                 continue
-            time=w
-            visit.add(src)
-            for des,dp in nmap[src]:
-                if  not des in visit:
-                    heapq.heappush(minHeap, [w+dp,des])
+            visit.add(curN)
+            time=curW
+            for neig,ncost in nmap[curN]:
+                if neig not in visit:
+                    heapq.heappush(minHeap,[curW+ncost, neig])
+                   
         return time if len(visit)==n else -1
-    
- 
+            
