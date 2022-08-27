@@ -18,7 +18,6 @@ class Solution(object):
                     continue
             cost+=dist
             res.add(point)
-            for d, nei in pointMap[point]:
-                
+            for d, nei in pointMap[point]:   
                 heapq.heappush(minHeap, [d , nei])
         return cost
