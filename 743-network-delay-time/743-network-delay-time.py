@@ -4,14 +4,14 @@ class Solution(object):
         for u,v,w in times:
             nmap[u].append([v,w])
         minHeap=[[0,k]]
-        visit=set()
+        visit=[]
         time =0
         while minHeap:
             curW, curN = heapq.heappop(minHeap)
             
             if curN in visit:
                 continue
-            visit.add(curN)
+            visit.append(curN)
             time=curW
             for neig,ncost in nmap[curN]:
                 if neig not in visit:
