@@ -11,7 +11,7 @@ class MedianFinder:
         if len(self.left)>len(self.right)+1:
             heapq.heappush(self.right, -(heapq.heappop(self.left)))
            
-        elif len(self.right)>len(self.left)+1:
+        if len(self.right)>len(self.left)+1:
              heapq.heappush(self.left, -(heapq.heappop(self.right)))
         
         
