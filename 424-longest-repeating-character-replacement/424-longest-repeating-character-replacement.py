@@ -9,7 +9,7 @@ class Solution:
             maxf = max(maxf, sMap[s[r]])
             curLen=r-l+1
             
-            if curLen - maxf >k:
+            if curLen - max(sMap.values()) >k:
                 sMap[s[l]]-=1
                 l+=1
             maxLen=max(maxLen, r-l+1)
