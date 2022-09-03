@@ -1,39 +1,14 @@
-class Solution(object):
-    def checkInclusion(self, s1, s2):
-        if len(s1)>len(s2): return False
-        l = 0
-        r = len(s1)
-        s1Count = collections.Counter(s1)
-        while r <= len(s2):
-            if s1Count == collections.Counter(s2[l:r]):
-                return True  
-            l += 1
-            r += 1
-            
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        minLen=len(s1)
+        l=0
+        r=0
+        if len(s1)>len(s2):
+            return False
+        while r<len(s2)-minLen+1:
+            curStr=s2[r:r+minLen]
+            # print(curStr)
+            if Counter(s1)==Counter(curStr):
+                return True
+            r+=1
         return False
-    
-    
-#         if len(s1)>len(s2): return False
-#         s1Map=collections.Counter(s1)
-#         l=0; r=len(s1)
-#         while r<=len(s2):
-#             if s1Map==collections.Counter(s2[l:r]):
-#                 return True
-#             l+=1
-#             r+=1
-#         return False
-        
-        
-        
-                
-#         l = 0
-#         r = len(s1)
-#         s1Count = collections.Counter(s1)
-#         print(s1Count)
-#         while r <= len(s2):
-#             if s1Count == collections.Counter(s2[l:r]):
-#                 return True  
-#             l += 1
-#             r += 1
-            
-#         return False
