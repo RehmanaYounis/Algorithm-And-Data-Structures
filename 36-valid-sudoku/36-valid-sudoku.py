@@ -1,93 +1,37 @@
 class Solution(object):
     def isValidSudoku(self, board):
-         
-        for i in range(9):
-            hashmap={}
-            for j in range(9):
-                val=board[i][j]
-                
-                if val in hashmap.keys() and val !='.':
+        rows= len(board)
+        cols=len(board[0])
+
+        def isValid(r,c, val):
+
+            for col in range(cols):
+                if col != c and board[r][col]==val:
+                    print('colwrong' , val, board[r][col])
                     return False
-                else:
-                    hashmap[val]=True
-                    
-        for i in range(9):
-            hashmap={}
-            for j in range(9):
-                val=board[j][i]
-                if val in hashmap.keys() and val !='.':
+            for row in range(rows):
+                if row != r and board[row][c]==val:
+                    print(' row wrong')
                     return False
-                else:
-                    hashmap[val]=True
-            
-        hashmap=collections.defaultdict(set)
-        for i in range(9):
-            for j in range(9):
-                val=board[i][j]
-                key=(i//3, j//3)
-                if val =='.':
-                    continue
-                if val in hashmap[key] :
-                    return False
-                else:
-                    hashmap[key].add(val)
-        return True 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#         rowsDict= collections.defaultdict(set)
-#         colsDict= collections.defaultdict(set)
-#         squareDict=collections.defaultdict(set)
-        
-#         for r in range(9):
-#             for c in range(9):
-#                 val=board[r][c]
-#                 if val=='.':
-#                     continue
-#                 if (val in rowsDict[r] or  
-#                     val in colsDict[c] or 
-#                     val  in squareDict[(r//3,c//3)]):
-#                      return False
-#                 rowsDict[r].add(val)
-#                 rowsDict[c].add(val)
-#                 squareDict[(r//3, c//3)].add(val)
-                
-                   
-#         return True
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-     
+
+            UC= (c//3) * 3
+            UR = (r//3) *3
+            print(UC, UR)
+            for i in range(3):
+                for j in range(3):
+                    nr = i + UR
+                    nc=   j+ UC
+                    print('new coord',nr,nc)
+                    if (nr != r and nc != c and board[nr][nc]==val):
+                        print('Wrong cube' , r,c , val)
+                        return False
+            print(r,c, "Correct")
+            return True
+
+        for cr in range(rows):
+            for cc in range(cols):
+                if board[cr][cc] != ".":
+                    print(cr,cc)
+                    if not isValid(cr,cc, board[cr][cc]):
+                        return False
+        return True
