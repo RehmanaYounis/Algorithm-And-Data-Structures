@@ -4,7 +4,7 @@ class Solution:
         l,r=0,0
         maxLen=0
         maxf=0
-        for r in range(len(s)):# r<len(s):
+        while r<len(s):
             sMap[s[r]] = 1+ sMap.get(s[r],0)
             maxf = max(maxf, sMap[s[r]])
             curLen=r-l+1
@@ -13,6 +13,7 @@ class Solution:
                 sMap[s[l]]-=1
                 l+=1
             maxLen=max(maxLen, r-l+1)
+            r+=1
 
         return maxLen
     
