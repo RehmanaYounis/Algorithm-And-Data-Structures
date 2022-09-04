@@ -1,22 +1,19 @@
-class Solution(object):
-    def generateParenthesis(self, n):
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res=[]
         stack=[]
-        res = []
-        
-        def backTrack(openC, closeC):
-            if openC==closeC==n:
+        def dfs(openB, closeB):
+            if openB==closeB == n:
                 res.append(''.join(stack))
                 return
-            if openC< n:
+            if openB <n:          
                 stack.append('(')
-                backTrack(openC+1,closeC)
+                dfs(openB+1, closeB)
                 stack.pop()
-            if closeC<openC:
+            if closeB<openB:
                 stack.append(')')
-                backTrack(openC,closeC+1)
+                dfs(openB, closeB+1)
                 stack.pop()
-        backTrack(0,0)
+        dfs(0,0)
         return res
-    
-    
-    
+                
