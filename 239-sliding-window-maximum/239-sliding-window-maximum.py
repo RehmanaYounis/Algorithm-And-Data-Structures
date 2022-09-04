@@ -1,5 +1,5 @@
-class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+class Solution(object):
+    def maxSlidingWindow(self, nums, k):
         q = collections.deque()
         res=[]
         for ind , val in enumerate(nums):
@@ -11,6 +11,27 @@ class Solution:
             if ind >=k-1:
                 res.append(nums[q[0]])
         return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
