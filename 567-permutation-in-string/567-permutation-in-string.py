@@ -7,7 +7,6 @@ class Solution:
             return False
         while r<len(s2)-minLen+1:
             curStr=s2[r:r+minLen]
-            # print(curStr)
             if Counter(s1)==Counter(curStr):
                 return True
             r+=1
