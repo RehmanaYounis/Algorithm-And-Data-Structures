@@ -9,5 +9,5 @@ class Solution:
             curStr=s2[r:r+minLen]
             if Counter(s1)==Counter(curStr):
                 return True
-            r+=1
+            
         return False
