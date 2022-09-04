@@ -5,7 +5,7 @@ class Solution:
         r=0
         if len(s1)>len(s2):
             return False
-        while r<len(s2)-minLen+1:
+        for r in range (len(s2)-minLen+1):
             curStr=s2[r:r+minLen]
             if Counter(s1)==Counter(curStr):
                 return True
