@@ -1,12 +1,14 @@
 class Solution(object):
     def dailyTemperatures(self, temperatures):
-        stack=[]
-        T=temperatures
+        t=temperatures
         res=[0]*len(temperatures)
-        for i in reversed(range(len(temperatures))):
-            while stack and T[i]>=stack[-1][0]:
+        stack=[]
+        for i in range(len(t))[::-1]:
+            while stack and stack[-1][1] <=t[i]:
                 stack.pop()
-            if stack and T[i]<stack[-1][0]:
-                res[i]=stack[-1][1] - i
-            stack.append([T[i], i])
+            if stack and t[i]< stack[-1][1]:
+                res[i]=stack[-1][0] - i
+            stack.append([i, t[i]])
         return res
+                
+            
