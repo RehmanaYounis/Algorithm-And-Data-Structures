@@ -1,7 +1,7 @@
 class TimeMap(object):
 
     def __init__(self):
-        self.TimeStamp={}
+        self.TimeStamp=defaultdict(list)
 
     def set(self, key, value, timestamp):
         if key not in self.TimeStamp:
@@ -10,7 +10,7 @@ class TimeMap(object):
         
 
     def get(self, key, timestamp):
-        res, values = "", self.TimeStamp.get(key, [])
+        res, values = "", self.TimeStamp[key]
         
         # left=0
         # right=len(curVal)-1
