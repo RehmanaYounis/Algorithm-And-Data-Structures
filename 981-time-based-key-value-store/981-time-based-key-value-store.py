@@ -20,6 +20,17 @@ class TimeMap(object):
             else:
                 r = m - 1
         return res
+ 
+ # res, values = "", self.keyStore.get(key, [])
+ #        l, r = 0, len(values) - 1
+ #        while l <= r:
+ #            m = (l + r) // 2
+ #            if values[m][1] <= timestamp:
+ #                res = values[m][0]
+ #                l = m + 1
+ #            else:
+ #                r = m - 1
+ #        return res
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
