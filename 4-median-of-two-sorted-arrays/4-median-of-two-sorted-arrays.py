@@ -1,33 +1,30 @@
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        totalLen= len(nums1)+len(nums2)
-        if len(nums1)<len(nums2):
-            A=nums1
-            B=nums2
-        else: 
-            A=nums2
-            B=nums1
-        print(A)
-        half=totalLen//2
-        l=0; r = len(A)-1
+        A, B = nums1, nums2
+        total = len(nums1) + len(nums2)
+        half = total // 2
+
+        if len(B) < len(A):
+            A, B = B, A
+
+        l, r = 0, len(A) - 1
         while True:
-            midA=(l+r)//2
-            midB= half-midA -2
-            
-            leftA=A[midA] if midA>=0 else float('-infinity')
-            rightA=A[midA+1] if (midA+1) < len(A) else float('infinity')
-            leftB=B[midB]  if midB >=0 else float('-infinity')
-            rightB=B[midB+1] if (midB+1) <len(B) else float('infinity')
-            
-            if leftA <= rightB and leftB <=rightA:
-                print('ok', leftA, leftB, rightA, rightB)
-                if (totalLen%2 == 0):
-                    med = (max(leftA,leftB) + min(rightA,rightB))/2
-                else:
-                    med= min(rightA, rightB)
-                return med
-            elif leftA<rightB:
-                l=midA+1
+            i = (l + r) // 2  # A
+            j = half - i - 2  # B
+
+            Aleft = A[i] if i >= 0 else float("-infinity")
+            Aright = A[i + 1] if (i + 1) < len(A) else float("infinity")
+            Bleft = B[j] if j >= 0 else float("-infinity")
+            Bright = B[j + 1] if (j + 1) < len(B) else float("infinity")
+
+            # partition is correct
+            if Aleft <= Bright and Bleft <= Aright:
+                # odd
+                if total % 2:
+                    return min(Aright, Bright)
+                # even
+                return (max(Aleft, Bleft) + min(Aright, Bright)) / 2
+            elif Aleft > Bright:
+                r = i - 1
             else:
-                r=midA-1
-            
+                l = i + 1
