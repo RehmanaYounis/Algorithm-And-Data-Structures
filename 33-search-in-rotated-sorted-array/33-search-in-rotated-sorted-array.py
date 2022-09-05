@@ -22,9 +22,9 @@ class Solution:
         else:
             left=0
             right=mid-1
-        print(l,r)
         l=left
         r=right
+        
         while l<=r:
             mid=(l+r)//2
             if target < nums[mid]:
