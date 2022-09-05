@@ -9,10 +9,16 @@ class Solution(object):
             return 
         elif len(lists)==1:
             return lists[0]
-        res=[]
-        for k in range(len(lists)):
-            res=self.Merge(res, lists[k])
-        return res
+        
+        while len(lists)>1:
+            res=[]
+            for k in range(0, len(lists), 2):
+                h1=lists[k]
+                h2=lists[k+1] if (k+1) < len(lists) else None
+                res.append(self.Merge(h1,h2))
+            lists=res
+
+        return lists[0]
     
     
     
