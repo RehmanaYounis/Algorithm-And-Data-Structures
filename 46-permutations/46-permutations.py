@@ -2,21 +2,21 @@ class Solution(object):
     def permute(self, nums):
         res=[]
         stack=[]
-        used=[False]*len(nums)
-        def dfs (j):
-            if len(stack) == len(nums):
-                res.append(stack[::])
-                return
-            for i in range(len(nums)):
-                if not used[i]:
-                    used[i]=True
-                    stack.append(nums[i])
-                    dfs(i+1)
-                    stack.pop()
-                    used[i]=False
-        dfs(0)
-        return res
+        visit=set()
         
+        def dfs():
+            if len(stack)==len(nums):
+                res.append(stack[:])
+                return
+            for i in nums:
+                if i not in visit:
+                    visit.add(i)
+                    stack.append(i)
+                    dfs()
+                    stack.pop()
+                    visit.remove(i)
+        dfs()
+        return res
         
         
         
