@@ -10,5 +10,5 @@ class Solution(object):
                 arr[left]=arr[right]
                 left+=1
             right+=1
-        print(left)
+        
         return left
