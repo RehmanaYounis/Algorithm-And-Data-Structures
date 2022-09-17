@@ -1,23 +1,25 @@
-class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+class Solution(object):
+    def threeSum(self, nums):
+        triplets = []
         nums.sort()
-        res=[]
-        for ind, num in enumerate(nums):
-            if ind >0 and nums[ind -1]==num:
-                continue
         
-            l=ind+1
-            r=len(nums)-1
-            
-            while l<r:
-                curSum = num + nums[l]+nums[r]
-                if curSum <0:
-                    l+=1
+        for i in range(len(nums)):
+            if i >0 and nums[i]==nums[i-1]:
+                continue
+            curVal=nums[i]
+            left= i+1
+            right= len(nums)-1
+            while left<right:
+                curSum=curVal+nums[left]+nums[right]
+                if (curSum) ==0:
+                    triplets.append([nums[i], nums[left], nums[right]])
+                    left+=1
+                    while nums[left]==nums[left-1] and left<right:
+                        left+=1
+                    
                 elif curSum>0:
-                    r -=1
+                    right-=1
                 else:
-                    res.append([num, nums[l], nums[r]])
-                    l+=1
-                    while nums[l] == nums[l-1] and l<r:
-                        l+=1
-        return res
+                    left+=1
+            
+        return triplets
