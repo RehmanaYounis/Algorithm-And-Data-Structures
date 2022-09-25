@@ -1,70 +1,20 @@
-class Solution(object):
-    def permute(self, nums):
-        res=[]
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
         stack=[]
-        visit=set()
-        
-        def dfs():
-            if len(stack)==len(nums):
-                res.append(stack[:])
+        res=[]
+        visit=[]
+        def dfs(j, stack):
+            
+            if len(stack)>=len(nums):
+                res.append(stack[::-1])
                 return
-            for i in nums:
-                if i not in visit:
-                    visit.add(i)
-                    stack.append(i)
-                    dfs()
+            for i in range(len(nums)):
+                if nums[i] not in visit:
+                    visit.append(nums[i])
+                    stack.append(nums[i])
+                    dfs(i+1,stack)
                     stack.pop()
-                    visit.remove(i)
-        dfs()
+                    visit.pop()
+                
+        dfs(0,stack)
         return res
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         # nums = [1,2,3]
-#         res=[]
-#         stack=[]
-#         used = [False]*len(nums)
-#         def backTrack():
-#             if len(stack)==len(nums):
-#                 res.append(stack[::])
-#                 return
-
-#             for i in range(len(nums)):
-#                 if not used[i]:
-#                     stack.append(nums[i])
-#                     used[i]=True
-#                     backTrack()
-#                     used[i]=False
-#                     stack.pop()
-#         backTrack()
-#         return res
-        
