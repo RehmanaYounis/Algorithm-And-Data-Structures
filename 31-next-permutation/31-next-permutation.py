@@ -2,13 +2,10 @@ class Solution(object):
     def nextPermutation(self, nums):
         index=len(nums)-2
         start=0
+        
         while index>=0 and nums[index]>=nums[index+1]:
             index-=1
-        
-        
-       
-        
-       
+            
         # Find the first elements on the left side greater than current index val
         if index>=0:
             right=len(nums)-1
