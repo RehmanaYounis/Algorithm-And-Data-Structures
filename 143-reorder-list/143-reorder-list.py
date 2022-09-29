@@ -28,7 +28,7 @@ class Solution(object):
             prev=cur
             cur=temp
        
-        first=dummy
+        first=head
         second=prev
         print(second.val)
         while first and second:
