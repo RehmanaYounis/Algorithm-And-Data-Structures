@@ -10,14 +10,12 @@ class Solution(object):
         if not slow.next:
             return head
         fast=head.next
-        
-        dummy=ListNode(0)
-        dummy=slow
+        dummy=head
         
         while fast and fast.next:
             slow=slow.next
             fast=fast.next.next
-            
+        print(slow.val)    
         temp=slow.next
         
         slow.next=None
