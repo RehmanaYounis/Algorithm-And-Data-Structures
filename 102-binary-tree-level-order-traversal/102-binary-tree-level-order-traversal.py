@@ -14,7 +14,7 @@ class Solution:
             stack=[]
             for i in range(len(q)):
                 node=q.popleft()
-                if node: stack.append(node.val)
+                stack.append(node.val)
                 if node.left:
                     q.append(node.left)
                 if node.right:
