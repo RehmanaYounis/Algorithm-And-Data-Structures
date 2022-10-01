@@ -6,17 +6,36 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        if not root:
-            return 0
-        maxVal=0
-        q=deque([root])
-        while q:
-            for _ in range(len(q)):
-                node=q.popleft()
-                if node.left: q.append(node.left)
-                if node.right: q.append(node.right)
-            maxVal+=1
-        return maxVal
+        maxLen=[0]
+        def dfs(root):
+            if not root:
+                return 0 
+            left=1+ dfs(root.left)
+            right=1+dfs(root.right)
+            maxLen[0]=max(left, right)
+            return max(left, right)
+        dfs(root)
+        return maxLen[0]
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
