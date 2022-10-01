@@ -14,6 +14,6 @@ class Solution(object):
             leftHeight=dfs(root.left)
             rightHeight = dfs(root.right)
             res[0]=max(res[0], leftHeight+rightHeight)
-            return 1 + max(leftHeight, rightHeight)
+            return 1+ max(leftHeight, rightHeight)
         dfs(root)
         return res[0]
