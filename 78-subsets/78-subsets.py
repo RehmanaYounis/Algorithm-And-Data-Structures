@@ -1,9 +1,9 @@
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        stack=[]
+class Solution(object):
+    def subsets(self, nums):
         res=[]
+        stack=[]
         def dfs(i):
-            if i ==len(nums):
+            if i>= len(nums):
                 res.append(stack[::-1])
                 return
             stack.append(nums[i])
