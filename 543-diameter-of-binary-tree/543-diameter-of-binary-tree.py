@@ -8,12 +8,11 @@ class Solution(object):
     def diameterOfBinaryTree(self, root):
         res=[0]
         def dfs(root):
-            # nonlocal res
             if not root:
                 return 0
-            leftHeight=dfs(root.left)
-            rightHeight = dfs(root.right)
-            res[0]=max(res[0], leftHeight+rightHeight)
-            return 1+ max(leftHeight, rightHeight)
+            left=dfs(root.left)
+            right=dfs(root.right)
+            res[0]=max(res[0], left+right)
+            return 1+max(left, right)
         dfs(root)
         return res[0]
