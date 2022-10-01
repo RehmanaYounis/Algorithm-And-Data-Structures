@@ -1,25 +1,22 @@
-class Solution:
-    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        stack=[]
+class Solution(object):
+    def combinationSum2(self, candidates, target):
         res=[]
-        nums=candidates
-        nums.sort()
-        def dfs(j, curSum):
+        stack=[]
+        candidates.sort()
+        def dfs(curSum,j):
+            if curSum==target:
+                res.append(stack[::-1])
+                return 
             if curSum>target:
                 return
-            if curSum==target:
-                res.append(stack[:])
-                return
             prev=-1
-            for i in range(j, len(nums)):
-                if prev == nums[i]:
+            for i in range(j,len(candidates)):
+                if prev == candidates[i]:
                     continue
-                stack.append(nums[i])
-                dfs(i+1,curSum+nums[i])
+                stack.append(candidates[i])
+                dfs(curSum+candidates[i], i+1)
                 stack.pop()
-                prev=nums[i]
+                prev=candidates[i]
         dfs(0,0)
         return res
-    
-    
-   
+        
