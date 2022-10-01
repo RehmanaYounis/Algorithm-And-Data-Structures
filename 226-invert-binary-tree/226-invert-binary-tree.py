@@ -12,5 +12,7 @@ class Solution:
             root.left, root.right=root.right, root.left
             dfs(root.left)
             dfs(root.right)
+            return
+        
         dfs(root)
         return root
