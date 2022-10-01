@@ -11,31 +11,33 @@ class Codec:
         res=[]
         def dfs(root):
             if not root:
-                res.append("N")
+                res.append('N')
                 return
             res.append(str(root.val))
             dfs(root.left)
             dfs(root.right)
         dfs(root)
-        return ",".join(res)
-        
+        return (','.join(res))
+                
         
 
     def deserialize(self, data):
-        i=0
-        data=data.split(',')
-        def dfs():
-            nonlocal i
-            if data[i]=="N":
-                i+=1
-                return 
-            node=TreeNode(int(data[i]))
-            i+=1
-            node.left=dfs()
-            node.right=dfs()
-            return node
-        return dfs()
+        cur = data.split(',')
+        self.index=0
+        def buildTree():
+            if cur[self.index]=='N':
+                self.index+=1
+                return None
+            root= TreeNode(int(cur[self.index]))
+            self.index+=1
+            root.left=buildTree()
+            root.right=buildTree()
+            return root
+        return buildTree()
+        
 
+        
+        
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
 # deser = Codec()
