@@ -3,20 +3,26 @@ class Solution:
         count=0
         rows=len(grid)
         cols=len(grid[0])
-        visited=set()
+        directions=[[-1,0],[1,0],[0,1],[0,-1]]
+        visit=set()
+        if not rows and not cols:
+            return count
+        def dfs(r, c):
+            if r<0 or r>=rows or c<0 or c>=cols or grid[r][c]=='0' or (r,c) in visit:
+                return 
+            visit.add((r,c))
+            for cr,  cc in directions:
+                nr = cr+r
+                nc = cc+c
+                dfs(nr, nc)
+            
         
-        def dfs(r,c):
-            if r<0 or c<0 or r==rows or c ==cols or (r,c) in visited or grid[r][c]=="0":
-                return
-            visited.add((r,c))
-            dfs(r+1,c)
-            dfs(r-1,c)
-            dfs(r,c+1)
-            dfs(r,c-1)
-        
-        for r in range(rows):
-            for c in range(cols):
-                if grid[r][c] =="1" and (r,c) not in visited:
-                    dfs(r,c)
+        for row in range(rows):
+            for col in range(cols):
+                if (row, col) not in visit and grid[row][col]=='1':
                     count+=1
+                    dfs(row, col)
+                    
+        
         return count
+            
