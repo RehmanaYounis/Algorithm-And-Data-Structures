@@ -1,51 +1,37 @@
-class Solution(object):
-    def pacificAtlantic(self, heights):
-        pgrp=set()
-        agrp=set()
-        res=[]
+class Solution:
+    def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         rows=len(heights)
         cols=len(heights[0])
-        
-        def dfs(r,c,curVal,visited):
-            if (r<0 or c<0 or r==rows or c==cols or (r,c) in visited or heights[r][c]<curVal):
+        pac=set()
+        atl=set()
+        directions=[[-1,0],[1,0],[0,1],[0,-1]]
+        def dfs(r,c, visit, curH):
+            if r<0 or r>=rows or c<0 or c>=cols or (r,c) in visit or heights[r][c]<curH:
                 return
-            visited.add((r,c))
-            dfs(r+1,c,heights[r][c], visited)
-            dfs(r-1,c,heights[r][c], visited)
-            dfs(r,c+1,heights[r][c], visited)
-            dfs(r,c-1,heights[r][c], visited)
-          
-         
-        for c in range (cols):
-            dfs(0,c,heights[0][c],pgrp)
-            dfs(rows-1,c,heights[rows-1][c],agrp)
+            visit.add((r,c))
+            curH=heights[r][c]
+            for cr,cc in directions:
+                nr=cr+r
+                nc=cc+c
+                dfs(nr,nc, visit,curH )
             
-        for r in range (rows):
-            dfs(r,0, heights[r][0],pgrp)
-            dfs(r,cols-1,heights[r][cols-1],agrp )
+        for col in range(cols):
+            dfs(0, col, pac, heights[0][col])
         
-      
-        for r in range (rows):
-            for c in range(cols):
-                if (r,c) in pgrp and (r,c) in agrp:
-                    res.append([r,c])
+        for row in range(rows):
+            dfs(row, 0, pac, heights[row][0])
         
+        for col in range(cols):
+            dfs(rows-1, col, atl, heights[rows-1][col])
+        
+        for row in range(rows):
+            dfs(row, cols-1, atl, heights[row][cols-1])
+            
+        res=[]
+        for row in range(rows):
+            for col in range(cols):
+                if (row,col) in pac and (row,col) in atl:
+                    res.append([row,col])
         return res
-    
-    
-            
-     
-#         for c in range(COLS):
-#             dfs(0, c, pac, heights[0][c])
-#             dfs(ROWS - 1, c, atl, heights[ROWS - 1][c])
-
-#         for r in range(ROWS):
-#             dfs(r, 0, pac, heights[r][0])
-#             dfs(r, COLS - 1, atl, heights[r][COLS - 1])
-
-#         res = []
-#         for r in range(ROWS):
-#             for c in range(COLS):
-#                 if (r, c) in pac and (r, c) in atl:
-#                     res.append([r, c])
-#         return res
+        
+        
