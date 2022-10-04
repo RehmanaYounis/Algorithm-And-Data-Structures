@@ -1,21 +1,29 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        cmap={i:[] for i in range((numCourses))}
-        for crs,pre in prerequisites:
-            cmap[crs].append(pre)
-        print(cmap)
-        visited=set()
-        def dfs(cur):
-            if cur in visited:
+        cMap={i: [] for i in range(numCourses)}
+
+        for crs, pre in prerequisites:
+            cMap[crs].append(pre)
+        
+        visit=set()
+        
+        def dfs(course):
+            if course in visit:
                 return False
-            if cmap[cur]==[]:
+            if cMap[course]==[]:
                 return True
-            visited.add(cur)
-            for pre in cmap[cur]:
-                if not dfs(pre): return False
-            visited.remove(cur)
-            cmap[cur]=[]
+            visit.add(course)
+            for pre in cMap[course]:
+                if not dfs(pre):
+                    return False
+            cMap[course]=[]
+            visit.remove(course)
             return True
-        for i in range(numCourses):
-            if not dfs(i): return False
+        
+        for crs in range(numCourses):
+            if not dfs(crs):
+                return False
         return True
+    
+    
+   
