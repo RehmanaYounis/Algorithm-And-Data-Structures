@@ -16,7 +16,7 @@ class Solution:
             for pre in cMap[course]:
                 if not dfs(pre):
                     return False
-            cMap[course]=[]
+                cMap[course].remove(pre)
             visit.remove(course)
             return True
         
