@@ -4,17 +4,17 @@ class Solution:
         COLS=len(matrix[0])
         visit=set()
         def dfs(r,c,dire):
-            if r>=0 and r<ROWS and c>=0 and c< COLS  and matrix[r][c] !=0:
-        
-                matrix[r][c]='*'
-                if dire == 'U':
-                    dfs(r-1, c, 'U')
-                elif dire == 'D':
-                    dfs(r+1, c, 'D')
-                elif dire =='R':
-                    dfs(r, c+1,'R')
-                else:
-                    dfs(r, c-1,'L')
+            if r<0 or r>=ROWS or c<0 or c>= COLS  or matrix[r][c] == 0:
+                return
+            matrix[r][c]='*'
+            if dire == 'U':
+                dfs(r-1, c, 'U')
+            elif dire == 'D':
+                dfs(r+1, c, 'D')
+            elif dire =='R':
+                dfs(r, c+1,'R')
+            else:
+                dfs(r, c-1,'L')
         
         for r in range(ROWS):
             for c in range(COLS):
