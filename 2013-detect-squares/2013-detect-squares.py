@@ -16,8 +16,8 @@ class DetectSquares:
             if qx==x and qy==y or abs(qx-x)!= abs(qy-y):
                 continue
             
-           
-            count+= self.pmap[(x,qy)] * self.pmap[(qx,y)]
+            if (x, qy) in self.pmap and (qx,y) in self.pmap:
+                count+= self.pmap[(x,qy)] * self.pmap[(qx,y)]
         return count
 
     
