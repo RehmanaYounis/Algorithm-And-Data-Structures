@@ -1,40 +1,12 @@
-class Solution:
-    def climbStairs(self, n: int) -> int:
-        count=0
+class Solution(object):
+    def climbStairs(self, n):
         sMap=defaultdict(int)
         def dfs(n):
-            if n<=1:
+            if n <=1:
                 return 1
+            
             if n in sMap:
                 return sMap[n]
-            withOne=dfs(n-1)
-            withTwo=dfs(n-2)
-            sMap[n]=withOne+withTwo
-            return withOne+withTwo
+            sMap[n]=dfs(n-1)+dfs(n-2)
+            return sMap[n]
         return dfs(n)
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # one, two= 1,1
-        # for i in range(n-1):
-        #     temp=one
-        #     one +=two
-        #     two = temp
-        # return one
