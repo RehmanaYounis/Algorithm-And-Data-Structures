@@ -1,6 +1,5 @@
 class Solution(object):
     def wordBreak(self, s, wordDict):
-        res=[]
         hashMap={}
         def dfs(sen):
             if len(sen)==0:
@@ -12,7 +11,8 @@ class Solution(object):
                 if word in wordDict:
                     if dfs(sen[i:]): 
                         hashMap[sen]=True
-                        return True
+                        return hashMap[sen]
+
             hashMap[sen]=False
-            return False 
+            return hashMap[sen]
         if dfs(s): return True
