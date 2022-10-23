@@ -13,8 +13,8 @@ class Solution:
                     visit.append(i)
                     stack.append(i)
                     dfs()
-                    stack.pop()
                     visit.pop()
+                    stack.pop()
         dfs()
         return res    
     
