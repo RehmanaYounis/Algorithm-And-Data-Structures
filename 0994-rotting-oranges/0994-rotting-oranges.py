@@ -17,7 +17,6 @@ class Solution:
         while fresh>0 and q:
             for _ in range(len(q)):
                 row,col=q.popleft()
-                print(row,col)
                 for cr,cc in direc:
                     r=row+cr
                     c=col+cc
