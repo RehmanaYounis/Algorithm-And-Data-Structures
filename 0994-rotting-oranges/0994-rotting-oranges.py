@@ -1,35 +1,32 @@
-class Solution(object):
-    def orangesRotting(self, grid):
-        q = collections.deque()
-        fresh = 0
-        time = 0
-
-        for r in range(len(grid)):
-            for c in range(len(grid[0])):
-                if grid[r][c] == 1:
-                    fresh += 1
-                if grid[r][c] == 2:
-                    q.append((r, c))
-
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-        while fresh > 0 and q:
-            length = len(q)
-            for i in range(length):
-                r, c = q.popleft()
-
-                for dr, dc in directions:
-                    row, col = r + dr, c + dc
-                    # if in bounds and nonrotten, make rotten
-                    # and add to q
-                    if (
-                        row in range(len(grid))
-                        and col in range(len(grid[0]))
-                        and grid[row][col] == 1
-                    ):
-                        grid[row][col] = 2
-                        q.append((row, col))
-                        fresh -= 1
-            time += 1
-        return time if fresh == 0 else -1
-
-
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        rows=len(grid)
+        cols=len(grid[0])
+        q=deque()
+        fresh=0
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c]==2:
+                    q.append([r,c])
+                if grid[r][c]==1:
+                    fresh+=1
+        print(q)
+        time=0
+        visit=set()
+        direc=[[1,0],[-1,0],[0,1],[0,-1]]
+        while fresh>0 and q:
+            for _ in range(len(q)):
+                row,col=q.popleft()
+                print(row,col)
+                for cr,cc in direc:
+                    r=row+cr
+                    c=col+cc
+                    if r<0 or r>=rows or c<0 or c>= cols or (r,c) in visit or grid[r][c]!=1:
+                        continue
+                    grid[r][c]=2
+                    q.append([r,c])
+                    visit.add((r,c))
+                    fresh-=1
+            time+=1
+        return time if fresh==0 else -1
+                
