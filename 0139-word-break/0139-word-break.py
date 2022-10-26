@@ -12,7 +12,6 @@ class Solution(object):
                     if dfs(sen[i:]): 
                         hashMap[sen]=True
                         return hashMap[sen]
-
             hashMap[sen]=False
             return hashMap[sen]
         if dfs(s): return True
