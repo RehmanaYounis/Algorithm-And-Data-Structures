@@ -1,7 +1,7 @@
 class Solution(object):
     def coinChange(self, coins, amount):
         if amount==0: return 0
-        hashMap={0:0}
+        hashMap={}
         def dfs(curVal):
             if curVal==0:
                 return 0
