@@ -15,8 +15,6 @@ class Solution(object):
                 if res != -1:
                     cur = res +1
                     curShort=min(curShort, cur)
-                
-            
             hashMap[curVal]=curShort
             return hashMap[curVal]
            
