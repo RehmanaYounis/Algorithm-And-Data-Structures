@@ -1,25 +1,20 @@
 class Solution(object):
     def rob(self, nums):
+        if len(nums)==1:
+            return nums[0]
+        def out_rob(nums):
+                dp1={}
+                dp2={}
+                return max(dfs(0,nums[1:],dp1), dfs(0,nums[:-1],dp2))
         
-        def MainRob(nums):
-            hashMap={}
-            if len(nums)==1:
-                return nums[0]
-            
-            def dfs(n):
-                if n > len(nums)-1:
-                    return 0
-                if n in hashMap:
-                    return hashMap[n]
-                choice1=nums[n]+dfs(n+2)
-                choice2=dfs(n+1)
-                hashMap[n]= max(choice1, choice2)
-                return  hashMap[n]
-            return dfs(0)
-        
-        
-        if len(nums)==0: return 0
-        if len(nums)==1: return nums[0]
-        return max(MainRob(nums[1:]), MainRob(nums[:-1]))
-        
+        def dfs(n,nums,dp):
+            if n in dp:
+                return dp[n]
+            if n>=len(nums):
+                return 0
+            case1=nums[n]+dfs(n+2, nums,dp)
+            case2=dfs(n+1, nums,dp)
+            dp[n]=max(case1,case2)
+            return dp[n]
+        return out_rob(nums)
         
