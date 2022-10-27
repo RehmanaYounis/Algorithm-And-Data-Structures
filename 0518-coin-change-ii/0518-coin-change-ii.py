@@ -10,8 +10,8 @@ class Solution(object):
                 return 1
             if amount<0:
                 return 0
-            dp[(j,amount)] = dfs(j,amount - coins[j]) + dfs(j + 1,amount)
-          
+            
+            dp[(j,amount)]=dfs(j,amount-coins[j])+dfs(j+1,amount)
             return dp[(j,amount)]
         return dfs(0, amount)
                 
