@@ -8,7 +8,7 @@ class Solution:
                 return True
             res=False
             print(i)
-            for j in range(i, len(s)+1):
+            for j in range(i, len(s)):
                 word=s[i:j+1]
                 if word in wordDict:
                     res=dfs(j+1)
