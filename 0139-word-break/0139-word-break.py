@@ -11,8 +11,6 @@ class Solution:
             for j in range(i, len(s)+1):
                 word=s[i:j+1]
                 if word in wordDict:
-                    # print(word,j)
-
                     res=dfs(j+1)
                     if res:
                         break
