@@ -32,23 +32,3 @@ class Solution(object):
         
         
         
-        
-        
-        
-#         maxLen=1
-#         dp={}
-#         def dfs(i):
-#             if i in dp:
-#                 return dp[i]
-#             maxLen=0
-#             for j in range(i+1, len(nums)):
-#                 if nums[i]<nums[j]:
-#                     cur=dfs(j)
-#                     maxLen=max(maxLen,cur )
-#             dp[i]=maxLen+1
-#             return dp[i]
-        
-#         for i in range(len(nums)):
-#             maxLen=max(maxLen,dfs(i))
-#         return maxLen
-    
