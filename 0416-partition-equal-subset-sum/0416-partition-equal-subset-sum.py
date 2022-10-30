@@ -12,13 +12,14 @@ class Solution:
                 return True
             if target <0:
                 return False
-            
+            dp[target]=False
             for i in range(j, len(nums)):
                 if dfs(target-nums[i],i+1):
                     dp[target]=True
                     return dp[target]
-            dp[target]=False
+            
             return dp[target]
+            return False
         
         
         for i in range(len(nums)):
@@ -33,7 +34,10 @@ class Solution:
    
         
         
-            
+#             if curSum==0:
+#                 return True
+#             if curSum<0:
+#                 return False
 #             for i in range(j, len(nums)):
 #                 if dfs(curSum-nums[i], i+1):
 #                     dp[curSum]=True
