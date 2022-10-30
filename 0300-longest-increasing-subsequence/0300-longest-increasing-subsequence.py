@@ -5,12 +5,12 @@ class Solution(object):
                 return dp[i]
             if i >=len(nums):
                 return 0
-            maxLen=0
+            maxLen=1
             for j in range(i+1,len(nums)):
                 if nums[i]<nums[j]:
-                    cur=dfs(j)
+                    cur=1+dfs(j)
                     maxLen=max(maxLen, cur)
-            dp[i]=maxLen+1
+            dp[i]=maxLen
             return dp[i]
         
         maxLen=1
