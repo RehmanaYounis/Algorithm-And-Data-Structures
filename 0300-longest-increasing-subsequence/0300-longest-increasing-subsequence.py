@@ -43,7 +43,7 @@ class Solution(object):
             maxLen=0
             curVal=nums[i]
             for j in range(i+1, len(nums)):
-                if curVal<nums[j]:
+                if nums[i]<nums[j]:
                     maxLen=max(maxLen, dfs(j))
             dp[i]=maxLen+1
             return dp[i]
