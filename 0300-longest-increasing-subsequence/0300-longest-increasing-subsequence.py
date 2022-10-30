@@ -44,7 +44,8 @@ class Solution(object):
             # curVal=nums[i]
             for j in range(i+1, len(nums)):
                 if nums[i]<nums[j]:
-                    maxLen=max(maxLen, dfs(j))
+                    cur=dfs(j)
+                    maxLen=max(maxLen,cur )
             dp[i]=maxLen+1
             return dp[i]
         
