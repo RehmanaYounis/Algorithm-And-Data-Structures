@@ -15,8 +15,7 @@ class Solution(object):
         
         maxLen=1
         dp={}
-        for i in range(len(nums)):
-            
+        for i in range(len(nums)):  
             maxLen=max(maxLen, dfs(i))
         return maxLen
        
