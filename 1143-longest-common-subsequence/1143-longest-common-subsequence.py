@@ -8,8 +8,7 @@ class Solution:
                 return 0
             dp[(i,j)]=0
             if text1[i]==text2[j]:
-                dp[(i,j)]=1+ dfs(i+1, j+1)
-                
+                dp[(i,j)]=1+ dfs(i+1, j+1)             
             else:
                 case1 =  dfs(i+1, j)
                 case2 = dfs(i,j+1)
