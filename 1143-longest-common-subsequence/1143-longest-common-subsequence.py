@@ -9,7 +9,7 @@ class Solution:
             # if i>=len(text1):
             #     return 0
 
-            if i<len(text1) and j<len(text2) and text1[i]==text2[j]:
+            if text1[i]==text2[j]:
                 dp[(i,j)]=1+ dfs(i+1, j+1)
                 return dp[(i,j)]
             else:
