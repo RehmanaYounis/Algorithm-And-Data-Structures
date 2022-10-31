@@ -4,7 +4,7 @@ class Solution:
         def dfs(i,j):
             if (i,j) in dp:
                 return dp[(i,j)]
-            if i>= len(text1) and j>= len(text2):
+            if i>= len(text1) or j>= len(text2):
                 return 0
             if i>=len(text1):
                 return 0
