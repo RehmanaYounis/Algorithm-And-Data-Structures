@@ -12,7 +12,7 @@ class Solution:
                 return dp[(i,j)]
             else:
                 case1 =  dfs(i+1, j)
-                case2 = dfs(i,j+1) #if j+1<len(text2) else 0
+                case2 = dfs(i,j+1)
                 dp[(i,j)]= max(case1, case2)
                 return dp[(i,j)]
 
