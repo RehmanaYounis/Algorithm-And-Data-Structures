@@ -1,19 +1,21 @@
-class Solution(object):
-    def longestCommonSubsequence(self, text1, text2):
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
         dp={}
-        def dfs(i1, i2):
-            if (i1,i2) in dp:
-                return dp[(i1,i2)]
-            if  i1>=len(text1) or i2>=len(text2):
+        def dfs(i,j):
+            if (i,j) in dp:
+                return dp[(i,j)]
+            if i>= len(text1) and j>= len(text2):
                 return 0
-            case1=dfs(i1+1, i2)
-            
-            case2=0
-            
-            index=text2.find(text1[i1],i2)
-            if index !=-1:
-                case2 = 1+ dfs(i1+1, index+1)
-            dp[(i1,i2)]=max(case1, case2)
-            return dp[(i1,i2)]
+            if i>=len(text1):
+                return 0
+
+            if i<len(text1) and j<len(text2) and text1[i]==text2[j]:
+                dp[(i,j)]=1+ dfs(i+1, j+1)
+                return dp[(i,j)]
+            else:
+                case1 =  dfs(i+1, j)
+                case2 = dfs(i,j+1) if j+1<len(text2) else 0
+                dp[(i,j)]= max(case1, case2)
+                return dp[(i,j)]
+
         return dfs(0,0)
-        
