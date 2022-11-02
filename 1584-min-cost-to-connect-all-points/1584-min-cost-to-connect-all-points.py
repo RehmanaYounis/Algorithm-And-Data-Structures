@@ -1,23 +1,29 @@
-class Solution(object):
-    def minCostConnectPoints(self, points):
-        pointMap=collections.defaultdict(list)
-        for i in range(len(points)):
-            for j in range(i+1, len(points)):
-                x1, y1=points[i]
+class Solution:
+    def minCostConnectPoints(self, points: List[List[int]]) -> int:
+        pMap=defaultdict(list)
+        N=len(points)
+        for i in range(N):
+            x1,y1=points[i]
+            for j in range(i+1, N):
                 x2,y2=points[j]
-                dist=abs(x1-x2)+abs(y1-y2)
-                pointMap[i].append([dist, j])
-                pointMap[j].append([dist, i])
+                dist =abs(x1-x2)+abs(y1-y2)
+                pMap[i].append([dist, j])
+                pMap[j].append([dist, i])
+                
+        
+        heap=[[0,0]]
+        res=0
+        visit=set()
+        while len(visit)< len(points):
+            # print(heap, len(visit))
+            cost, point=heapq.heappop(heap)
+            if point in visit:
+                continue
+            
+            visit.add(point)
+            res+=cost
 
-        minHeap=[[0,0]]
-        res=set()
-        cost=0
-        while len(res) < len(points):
-            dist, point = heapq.heappop(minHeap)
-            if point in res:
-                    continue
-            cost+=dist
-            res.add(point)
-            for d, nei in pointMap[point]:   
-                heapq.heappush(minHeap, [d , nei])
-        return cost
+            for curCost, nei in pMap[point]:
+                if nei not in visit:
+                    heapq.heappush(heap, [curCost, nei])
+        return res
