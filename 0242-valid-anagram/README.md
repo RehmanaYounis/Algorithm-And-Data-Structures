@@ -4,12 +4,12 @@
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
-<pre style="position: relative;"><strong>Input:</strong> s = "anagram", t = "nagaram"
+<pre><strong>Input:</strong> s = "anagram", t = "nagaram"
 <strong>Output:</strong> true
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre><p><strong class="example">Example 2:</strong></p>
-<pre style="position: relative;"><strong>Input:</strong> s = "rat", t = "car"
+</pre><p><strong class="example">Example 2:</strong></p>
+<pre><strong>Input:</strong> s = "rat", t = "car"
 <strong>Output:</strong> false
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
