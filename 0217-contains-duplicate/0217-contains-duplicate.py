@@ -1,8 +1,8 @@
-class Solution(object):
-    def containsDuplicate(self, nums):
-        hashset = {}
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        hashmap={}
         for num in nums:
-            if num in hashset:
+            if num in hashmap:
                 return True
-            hashset[num]=True
+            hashmap[num]=1
         return False
