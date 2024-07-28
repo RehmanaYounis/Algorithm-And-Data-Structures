@@ -1,16 +1,17 @@
 class Solution(object):
     def maxProfit(self, prices):
-        l,r=0,1
-        maxProf,currProf = 0,0
-        while r < len(prices):
-            if prices[l] <prices[r]:
-                currProf=prices[r]-prices[l]
-                maxProf=max(currProf, maxProf)
-            else:
+        l=0
+        r=1
+        maxProfit=0
+        while r<len(prices):
+            curProf=prices[r]-prices[l]
+            maxProfit=max(maxProfit,curProf)
+            if prices[r]<prices[l]:
                 l=r
-            r+=1
-        return maxProf
-        
+                r+=1
+            else:
+                r+=1
+        return maxProfit
         
         
         
