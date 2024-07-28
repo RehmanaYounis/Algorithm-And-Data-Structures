@@ -1,13 +1,9 @@
-class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hashMap=defaultdict(list)
-        for cur in strs:
-            key=''.join(sorted(cur))
-            if key in hashMap:
-                hashMap[key].append(cur)
-            else:
-                hashMap[key]=[cur]
-        res=[]
-        for key in hashMap:
-            res.append(hashMap[key])
-        return res
+class Solution(object):
+    def groupAnagrams(self, strs):
+        ana_map=defaultdict(list)
+        for s in strs:
+            count = [0] * 26
+            for ch in s:
+                count[ord(ch) - ord('a')]+=1
+            ana_map[tuple(count)].append(s)
+        return ana_map.values()
