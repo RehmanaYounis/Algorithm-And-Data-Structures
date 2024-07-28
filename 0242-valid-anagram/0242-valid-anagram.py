@@ -1,66 +1,14 @@
-class Solution(object):
-    def isAnagram(self, s, t):
-        if len(s) != len(t): return False
-        sMap, tMap={},{}
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        smap ={}
+        tmap={}
+        if len(s) != len(t):
+            return False
+            
         for i in range(len(s)):
-            sMap[s[i]]=1+sMap.get(s[i], 0)
-            tMap[t[i]]=1+tMap.get(t[i], 0)
-        if sMap == tMap: return True
-        return False
+            smap[s[i]]=1+smap.get(s[i], 0)
+            tmap[t[i]]=1+tmap.get(t[i], 0)
+        return smap == tmap
             
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         if len(s) != len(t): return False
-#         sMap, tMap ={}, {}
-#         for i in range(len(s)):
-#             sMap[s[i]] =1 + sMap.get(s[i],0)
-#             tMap[t[i]] =1 + tMap.get(t[i],0)
-#         for key in sMap:
-#             print(key, sMap[key],sMap[key])
-#             if sMap[key] != tMap.get(key, 0):       
-#                 return False
             
-#         return True
-            
-# #             sMap[s[i]] =1 + sMap.get(s[i],0)
-# #         print (sMap)
-    
-    
-    
-    
-        # smap=Counter(s)
-        # tmap=Counter(t)
-        # if smap==tmap:
-        #     return True
-        # else:
-        #     return False
