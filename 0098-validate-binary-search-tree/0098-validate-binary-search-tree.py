@@ -8,14 +8,14 @@ class Solution(object):
     def isValidBST(self, root):
         if not root: return True
         
-        def dfs(root, minVal, maxVal):
+        
+        return self.dfs(root, float("-inf"), float("inf"))
+       
+    def dfs(self,root, minVal, maxVal):
             if not root: return True
             if not (minVal<root.val<maxVal):
                 return False
-            return dfs(root.left, minVal,root.val) and dfs(root.right,root.val,maxVal)
-        return dfs(root, float("-inf"), float("inf"))
-       
-    
+            return self.dfs(root.left, minVal,root.val) and self.dfs(root.right,root.val,maxVal)
     
     
     
