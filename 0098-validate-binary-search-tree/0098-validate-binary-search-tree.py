@@ -6,37 +6,15 @@
 #         self.right = right
 class Solution(object):
     def isValidBST(self, root):
-        if not root: return True
         
-        
-        return self.dfs(root, float("-inf"), float("inf"))
-       
-    def dfs(self,root, minVal, maxVal):
-            if not root: return True
-            if not (minVal<root.val<maxVal):
+        def dfs(root, MinVal, MaxVal):
+            if not root:
+                return True
+            if not (MinVal<root.val<MaxVal):
                 return False
-            return self.dfs(root.left, minVal,root.val) and self.dfs(root.right,root.val,maxVal)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#      minVal=float('-inf')
-#         maxVal=float('inf')
-        
-#         def dfs(root, minVal, maxVal):
-#             if not root:
-#                 return True
-            
-#             if not (root.val > minVal and root.val < maxVal):
-#                 return False
-#             return dfs(root.left, minVal, root.val) and dfs(root.right, root.val, maxVal)
-    
-#         return dfs(root, minVal, maxVal)
+            return dfs(root.left,MinVal,root.val) and dfs(root.right,root.val, MaxVal)
+            return True
         
         
         
+        return dfs(root,float("-inf"), float("inf"))
