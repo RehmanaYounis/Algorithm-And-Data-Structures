@@ -6,9 +6,11 @@
 #         self.right = right
 class Solution(object):
     def levelOrder(self, root):
-        if not root:return []
-        q=deque([root])
         res=[]
+        if not root:
+            return res
+        q=deque()
+        q.append(root)
         while q:
             temp=[]
             for i in range(len(q)):
@@ -20,4 +22,6 @@ class Solution(object):
                     q.append(node.right)
             res.append(temp)
         return res
+                
+
             
