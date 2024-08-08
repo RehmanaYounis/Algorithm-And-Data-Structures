@@ -6,7 +6,6 @@ class Solution:
         prevEnd=intervals[0][1]
         
         for start, end in intervals:
-            print(prevEnd)
             if prevEnd<start:
                 res.append([start,end])
             else:
