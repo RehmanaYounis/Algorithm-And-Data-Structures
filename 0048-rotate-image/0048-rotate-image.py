@@ -1,18 +1,79 @@
-class Solution:
-    def rotate(self, matrix: List[List[int]]) -> None:
-        length=len(matrix)
-        for i in range(length):
-            for j in range(i, length):
-                temp=matrix[i][j]
-                matrix[i][j]= matrix[j][i]
-                matrix[j][i]= temp
+# https://www.youtube.com/watch?v=SA867FvqHrM
+
+class Solution(object):
+    def rotate(self, matrix):
+        rows=len(matrix)
+        cols=len(matrix[0])
         
-        for i in range(length):
-            l,r=0,length-1
+        row_start=0
+        col_start=0
+        
+        for i in range(rows):
+            for j in range(i, cols):
+                temp =matrix[i][j]
+                matrix[i][j] = matrix[j][i]
+                matrix[j][i]=temp
+        
+        for i in range(rows):
+            l, r= 0, cols-1
             while l<r:
-                temp1=matrix[i][l]
+                temp=matrix[i][l]
                 matrix[i][l]=matrix[i][r]
-                matrix[i][r]=temp1
+                matrix[i][r] = temp
                 l+=1
                 r-=1
+                
+                
+                
+        
+        return matrix
             
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         rows=len(matrix)
+#         cols=len(matrix[0])
+#         for i in range(rows):
+#             for j in range(i, cols):
+#                 matrix[i][j], matrix[j][i]= matrix[j][i], matrix[i][j]
+        
+#         for i in range(rows):
+#             l,r=0,cols-1
+#             r = cols-1
+#             while l<r:
+#                 matrix[i][l], matrix[i][r]= matrix[i][r], matrix[i][l]
+#                 l+=1
+#                 r-=1
+        
+#         return matrix
+        
