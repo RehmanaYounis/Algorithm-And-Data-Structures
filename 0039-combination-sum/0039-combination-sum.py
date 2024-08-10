@@ -1,19 +1,24 @@
-class Solution:
-    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        res=[]
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        res, curSol=[],[]
+        curSum=0
         nums=candidates
-        stack=[]
-
-        def dfs(j, curSum):
-            if curSum==0:
-                return True
-            if curSum<0:
-                return False
-            for i in range(j, len(candidates)):
-                stack.append(nums[i])
-                if dfs(i, curSum-nums[i]):
-                    res.append(stack[::])
-                stack.pop()
-        dfs(0,target)
+        length=len(candidates)
+        i=0
+        def dfs(i,curSum):
+            if curSum == target:
+                res.append(curSol[:])
+                return 
+            if curSum> target or i == length:
+                return
+            dfs(i+1, curSum)
+            curSol.append(nums[i])
+            dfs(i, curSum+nums[i])
+            curSol.pop()
+        dfs(0,0)
         return res
             
+        
+        
+        
+        
