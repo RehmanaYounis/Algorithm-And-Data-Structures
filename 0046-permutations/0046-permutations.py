@@ -10,10 +10,8 @@ class Solution:
             
             for i in nums:
                 if i not in stack:
-                    visit.append(i)
                     stack.append(i)
                     dfs()
-                    visit.pop()
                     stack.pop()
         dfs()
         return res    
