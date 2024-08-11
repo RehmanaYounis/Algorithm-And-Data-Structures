@@ -9,7 +9,7 @@ class Solution:
                 return
             
             for i in nums:
-                if i not in visit:
+                if i not in stack:
                     visit.append(i)
                     stack.append(i)
                     dfs()
