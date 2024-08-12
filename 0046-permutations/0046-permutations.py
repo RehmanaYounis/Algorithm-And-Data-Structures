@@ -1,19 +1,52 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res=[]
-        stack=[]
         visit=[]
         def dfs():
-            if len(stack)==len(nums):
-                res.append(stack[::])
+            if len(visit) ==len(nums):
+                res.append(visit[:])
                 return
-            
             for i in nums:
-                if i not in stack:
-                    stack.append(i)
+                if i not in visit:
+                    visit.append(i)
                     dfs()
-                    stack.pop()
+                    visit.pop()
         dfs()
-        return res    
+        return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         res=[]
+#         stack=[]
+#         def dfs():
+#             if len(stack)==len(nums):
+#                 res.append(stack[::])
+#                 return
+            
+#             for i in nums:
+#                 if i not in stack:
+#                     stack.append(i)
+#                     dfs()
+#                     stack.pop()
+#         dfs()
+#         return res    
     
     
