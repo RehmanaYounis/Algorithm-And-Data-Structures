@@ -3,7 +3,7 @@ class Solution:
         res=[]
         visit=[]
         def dfs():
-            if len(visit) ==len(nums):
+            if len(visit)==len(nums):
                 res.append(visit[:])
                 return
             for i in nums:
@@ -13,6 +13,45 @@ class Solution:
                     visit.pop()
         dfs()
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         res=[]
+#         visit=[]
+#         def dfs():
+#             if len(visit) ==len(nums):
+#                 res.append(visit[:])
+#                 return
+#             for i in nums:
+#                 if i not in visit:
+#                     visit.append(i)
+#                     dfs()
+#                     visit.pop()
+#         dfs()
+#         return res
         
         
         
