@@ -3,16 +3,17 @@ class Solution(object):
         res=[]
         visit=[]
         def dfs(i):
-            if i >= len(nums) or nums[i] in visit:
+            if i == len(nums):
                 res.append(visit[:])
                 return
-            
             visit.append(nums[i])
             dfs(i+1)
             visit.pop()
             dfs(i+1)
         dfs(0)
         return res
+        
+        
         
         
         
