@@ -6,7 +6,6 @@ class Solution:
         for i in range(32):
             rev = rev <<1
             digit=n&1
-            rev = rev|digit
+            rev=rev|digit
             n=n>>1
         return rev
-   
