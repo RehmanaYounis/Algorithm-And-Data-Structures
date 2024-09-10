@@ -1,32 +1,23 @@
-# https://www.youtube.com/watch?v=SA867FvqHrM
-
-class Solution(object):
-    def rotate(self, matrix):
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
         rows=len(matrix)
         cols=len(matrix[0])
-        
-        row_start=0
-        col_start=0
-        
         for i in range(rows):
             for j in range(i, cols):
-                temp =matrix[i][j]
-                matrix[i][j] = matrix[j][i]
+                temp=matrix[i][j]
+                matrix[i][j]=matrix[j][i]
                 matrix[j][i]=temp
         
-        for i in range(rows):
-            l, r= 0, cols-1
-            while l<r:
-                temp=matrix[i][l]
-                matrix[i][l]=matrix[i][r]
-                matrix[i][r] = temp
-                l+=1
-                r-=1
-                
-                
-                
+        for row in range(rows):
+            left=0
+            right=cols-1
+            while left < right:
+                temp=matrix[row][left]
+                matrix[row][left]=matrix[row][right]
+                matrix[row][right]=temp
+                left+=1
+                right-=1
         
-        return matrix
             
         
         
@@ -60,20 +51,19 @@ class Solution(object):
         
         
         
+#         length=len(matrix)
+#         for i in range(length):
+#             for j in range(i, length):
+#                 temp=matrix[i][j]
+#                 matrix[i][j]= matrix[j][i]
+#                 matrix[j][i]= temp
         
-#         rows=len(matrix)
-#         cols=len(matrix[0])
-#         for i in range(rows):
-#             for j in range(i, cols):
-#                 matrix[i][j], matrix[j][i]= matrix[j][i], matrix[i][j]
-        
-#         for i in range(rows):
-#             l,r=0,cols-1
-#             r = cols-1
+#         for i in range(length):
+#             l,r=0,length-1
 #             while l<r:
-#                 matrix[i][l], matrix[i][r]= matrix[i][r], matrix[i][l]
+#                 temp1=matrix[i][l]
+#                 matrix[i][l]=matrix[i][r]
+#                 matrix[i][r]=temp1
 #                 l+=1
 #                 r-=1
-        
-#         return matrix
-        
+            
