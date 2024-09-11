@@ -1,26 +1,74 @@
 class Solution(object):
     def insert(self, intervals, newInterval):
         res=[]
-        new_start, new_end=newInterval
+        newS,newE=newInterval
+
         for i in range(len(intervals)):
-            cur_start=intervals[i][0]
-            cur_end=intervals[i][1]
-            
-            
-            if new_end < cur_start:
-                res.append([new_start,new_end])
+            curS,curE=intervals[i]
+            print(curS,curE)
+            if newE < curS:
+                res.append([newS,newE])
                 res+=intervals[i:]
                 return res
-            
-            elif cur_end < new_start:
-                res.append(intervals[i])
-            
+            elif curE < newS:
+                res.append([curS,curE])
             else:
-                new_start=min(new_start, cur_start)
-                new_end=max(new_end,cur_end)
-                
-        res.append([new_start, new_end])
+                newS=min(newS, curS)
+                newE=max(newE, curE)
+        res.append([newS,newE])
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         res=[]
+#         new_start, new_end=newInterval
+#         for i in range(len(intervals)):
+#             cur_start=intervals[i][0]
+#             cur_end=intervals[i][1]
+            
+            
+#             if new_end < cur_start:
+#                 res.append([new_start,new_end])
+#                 res+=intervals[i:]
+#                 return res
+            
+#             elif cur_end < new_start:
+#                 res.append(intervals[i])
+            
+#             else:
+#                 new_start=min(new_start, cur_start)
+#                 new_end=max(new_end,cur_end)
+                
+#         res.append([new_start, new_end])
+#         return res
              
         
         
