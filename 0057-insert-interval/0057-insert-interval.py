@@ -5,15 +5,12 @@ class Solution(object):
         for i in range(len(intervals)):
             curS,curE=intervals[i]
             if newE<curS:
-                print('first')
                 res.append([newS,newE])
                 res+=intervals[i:]
                 return res
             elif curE<newS:
-                print('second')
                 res.append(intervals[i])
             else:
-                print('third')
                 newS,newE=min(newS,curS), max(newE,curE)
         res.append([newS,newE])
         return res
