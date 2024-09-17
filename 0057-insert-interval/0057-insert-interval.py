@@ -2,21 +2,72 @@ class Solution(object):
     def insert(self, intervals, newInterval):
         res=[]
         newS,newE=newInterval
-
         for i in range(len(intervals)):
             curS,curE=intervals[i]
-            print(curS,curE)
-            if newE < curS:
+            if newE<curS:
+                print('first')
                 res.append([newS,newE])
                 res+=intervals[i:]
                 return res
-            elif curE < newS:
-                res.append([curS,curE])
+            elif curE<newS:
+                print('second')
+                res.append(intervals[i])
             else:
-                newS=min(newS, curS)
-                newE=max(newE, curE)
+                print('third')
+                newS,newE=min(newS,curS), max(newE,curE)
         res.append([newS,newE])
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         res=[]
+#         newS,newE=newInterval
+
+#         for i in range(len(intervals)):
+#             curS,curE=intervals[i]
+#             print(curS,curE)
+#             if newE < curS:
+#                 res.append([newS,newE])
+#                 res+=intervals[i:]
+#                 return res
+#             elif curE < newS:
+#                 res.append([curS,curE])
+#             else:
+#                 newS=min(newS, curS)
+#                 newE=max(newE, curE)
+#         res.append([newS,newE])
+#         return res
         
         
         
