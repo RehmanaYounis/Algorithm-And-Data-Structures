@@ -1,18 +1,18 @@
-class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        num=0
-        tens=1
-        num=digits[-1]
-        i=len(digits)-2
-        while i>=0:
-            tens=10* tens
-            print(tens)
-            num=tens*digits[i] +num
-            i-=1
-        num+=1
-        res=[]
-        while num:
-            digit=num%10
-            res.append(digit)
-            num=num//10
-        return res[::-1]
+class Solution(object):
+    def plusOne(self, digits):
+        carry=1
+        i=0
+        digits=digits[::-1]
+        while carry:
+            if i<len(digits):
+                if digits[i]==9:
+                    digits[i]=0
+                else:
+                    digits[i]+=1
+                    carry=0
+            else:
+                digits.append(carry)
+                carry=0
+            i+=1
+        digits=digits[::-1]
+        return digits
