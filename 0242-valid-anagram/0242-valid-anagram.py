@@ -4,7 +4,9 @@ class Solution(object):
             return False
         sMap=Counter(s)
         tMap=Counter(t)
-        if sMap !=tMap:return False
+        for key, val in sMap.items():
+            if sMap[key] != tMap[key]:
+                return False
         return True
         
         
