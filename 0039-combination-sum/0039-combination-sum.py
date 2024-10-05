@@ -1,28 +1,74 @@
 class Solution(object):
     def combinationSum(self, candidates, target):
         curSum=0
-        visit=[]
+        stack=[]
         res=[]
         nums=candidates
-        def dfs(i, curSum):
-            if curSum > target or i >= len(nums):
+        def dfs(i,curSum, stack):
+            if i>= len(nums) or curSum > target:
+                return 0
+            if curSum == target:
+                res.append(stack[::])
                 return
-            if curSum== target:
-                res.append(visit[:])
-                return
-            visit.append(nums[i])
-            dfs(i, curSum+nums[i])
-            visit.pop()
-            dfs(i+1, curSum)
-        dfs(0, 0)
+            stack.append(nums[i])
+            dfs(i,curSum+nums[i],stack)
+            stack.pop()
+            dfs(i+1,curSum,stack)
+        dfs(0,0,[])
         return res
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+#         curSum=0
+#         visit=[]
+#         res=[]
+#         nums=candidates
+#         def dfs(i, curSum):
+#             if curSum > target or i >= len(nums):
+#                 return
+#             if curSum== target:
+#                 res.append(visit[:])
+#                 return
+#             visit.append(nums[i])
+#             dfs(i, curSum+nums[i])
+#             visit.pop()
+#             dfs(i+1, curSum)
+#         dfs(0, 0)
+#         return res
             
         
         
         
         
         
-#         res=[]
+# #         res=[]
 #         curSol=[]
 #         def dfs(i, curVal):
 #             if i>= len(candidates) or curVal>target:
