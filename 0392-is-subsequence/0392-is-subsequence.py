@@ -1,53 +1,13 @@
-class Solution(object):
-    def isSubsequence(self, s, t):
-        if len(s)>len(t): return False
-        if s=="": return True
-        i=0
-        for j in range(len(t)):
-            if s[i] == t[j]:
-                i+=1
-            if i ==len(s): return True
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        if len(s) ==0: return True
+        if len(s) > len(t): return False
+        l=0
+        for ind,val in enumerate(t):
+            if l<len(s) and s[l] == val:
+                print(s[l],l)
+                l+=1
+                
+        if l>=len(s):
+                return True     
         return False
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         if len(s) >len(t):
-#             return False
-#         if s =="":
-#             return True
-#         left=0
-#         for right in t:
-#             if left < len(s) and s[left]==right:
-#                 left+=1
-#         if left==len(s):
-#             return True
-#         return False
-        
