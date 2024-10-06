@@ -1,27 +1,9 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        hmap=defaultdict(int)
-        for i in nums:
-            hmap[i]+=1
-            if hmap[i]>1:
+        nmap=defaultdict(int)
+        for num in nums:
+            if nmap[num] == 1:
                 return True
+            nmap[num]=1
         return False
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         hashmap={}
-#         for num in nums:
-#             if num in hashmap:
-#                 return True
-#             hashmap[num]=1
-#         return False
