@@ -2,42 +2,14 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         rows,cols=m,n
         dp={}
-        def dfs(r,c):
-            if (r,c) in dp:
-                return dp[(r,c)]
-            if r< 0 or r >=rows or c< 0 or c>=cols:
-                return 0
-            if r==(m-1) and c ==(n-1):
+        def dfs(i,j):
+            if (i,j) in dp:
+                return dp[(i,j)]
+            if i==rows-1 and j == cols-1:
                 return 1
-            dp[(r,c)]=dfs(r+1,c)+dfs(r,c+1)
-            return dp[(r,c)]
+            if (i<0 or i>=rows) or (j<0 or j>=cols):
+                return 0
+            res= dfs(i+1,j) + dfs(i, j+1)
+            dp[(i,j)]=res
+            return res
         return dfs(0,0)
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-#         rows=m
-#         cols=n
-#         dp={}
-#         def dfs(r,c):
-#             if (r,c) in dp:
-#                 return dp[(r,c)]
-#             if r<0 or r>=m or c<0 or c>=n:
-#                 return 0
-#             if r==m-1 and c==n-1:
-#                 return 1
-#             R=dfs(r+1,c)
-#             C=dfs(r, c+1)
-#             dp[(r,c)]=R+C
-#             return dp[(r,c)]
-#         return dfs(0,0)
-        
