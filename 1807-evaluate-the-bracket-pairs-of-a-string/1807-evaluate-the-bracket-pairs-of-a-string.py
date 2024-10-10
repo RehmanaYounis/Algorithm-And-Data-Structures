@@ -1,24 +1,23 @@
 class Solution:
     def evaluate(self, s: str, knowledge: List[List[str]]) -> str:
-        i=0
-        t=''
-        wordMap=defaultdict(str)
-        
-        for key, val in knowledge:
-            wordMap[key]=val
-        print(wordMap)
-        while i < len(s):
-            j=i+1
-            if s[i] =='(':
-                while s[i] != ')':
-                    i+=1
-                word=s[j:i]
-                replac= wordMap[word] if word in wordMap else '?'
-                #print('word to replace', replac)
-
-                t+=replac
-            else:
-                t+=s[i]
-            i+=1
-        return t
-                
+        kmap=defaultdict(str)
+        for key,val in knowledge:
+            kmap[key]=val
+        l=0
+        res=''
+        flag=0
+        for r, ch in enumerate(s):
+            if ch == '(':
+                l=r+1
+                flag=1
+            elif ch == ')':
+                if s[l:r] not in kmap:
+                    word='?'
+                else:
+                    word=kmap[s[l:r]]
+                res+=word
+                flag=0
+            elif flag==0:
+                res+=ch
+        return res
+            
