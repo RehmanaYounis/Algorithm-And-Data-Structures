@@ -1,30 +1,29 @@
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        eMap = defaultdict(list)
-        for i, val  in enumerate(equations):
-            a,b = val
-            eMap[a].append([b,values[i]])
-            eMap[b].append([a,1/values[i]])
+        eMap=defaultdict(list)
+        for ind,lst in enumerate(equations):
+            a,b=lst
+            eMap[a].append([b, values[ind]])
+            eMap[b].append([a,1/values[ind]])
+        print(eMap)
         
-        def bfs(src,target):
-            if src not in eMap or target not in eMap: return -1
+        def bfs(src,dest):
+            if src not in eMap or dest not in eMap:
+                return -1
             q=deque()
             q.append([src,1])
-            visited=set()
-            visited.add(src)
+            visit=set()
             while q:
-                node, w = q.popleft()
-                if node == target:
-                    return w
+                node,weight=q.pop()
+                if node==dest:
+                    return weight
                 for nei in eMap[node]:
-                    nxt, val = nei
-                    if nxt not in visited:
-                        visited.add(nxt)
-                        q.append([nxt, val*w])
+                    curNode,curWeight=nei
+                    if curNode not in visit:
+                        visit.add(curNode)
+                        q.append([curNode, weight*curWeight])
             return -1
-        res=[]   
-        for quer in queries:
-            src,target=quer
-            res.append(bfs(src,target))
+        res=[]
+        for elem in queries:
+            res.append(bfs(elem[0],elem[1]))
         return res
-        
