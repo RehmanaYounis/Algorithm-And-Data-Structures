@@ -1,13 +1,11 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        if len(s) ==0: return True
-        if len(s) > len(t): return False
+        if len(s)>len(t):return False
+        if s =='': return True
         l=0
-        for ind,val in enumerate(t):
-            if l<len(s) and s[l] == val:
-                print(s[l],l)
+        for ind, ch in enumerate(t):
+            if s[l]==ch:
                 l+=1
-                
-        if l>=len(s):
-                return True     
+                if l==len(s):
+                    return True
         return False
